@@ -103,7 +103,7 @@
                         android:paddingLeft="10dp"
                         android:paddingTop="10dp"
                         android:text="@string/when_where"
-                        android:textColor="#fff"
+                        android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:textColor="#fff"
+                        android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>

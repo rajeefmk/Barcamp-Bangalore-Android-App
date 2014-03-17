@@ -20,6 +20,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -123,8 +124,10 @@ public class CircularImageView extends ImageView {
 
 		Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
 		int circleCenter = w / 2;
-		canvas.drawCircle(circleCenter + borderWidth, circleCenter
-				+ borderWidth, circleCenter + borderWidth, paintBorder);
+		canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()), 4, 4,
+				paintBorder);
+		// canvas.drawCircle(circleCenter + borderWidth, circleCenter
+		// + borderWidth, circleCenter + borderWidth, paintBorder);
 		canvas.drawBitmap(roundBitmap, borderWidth, borderWidth, null);
 		if (isPressed() && mPainter != null) {
 			canvas.drawCircle(circleCenter + borderWidth, circleCenter
@@ -152,8 +155,10 @@ public class CircularImageView extends ImageView {
 		paint.setDither(true);
 		canvas.drawARGB(0, 0, 0, 0);
 		paint.setColor(Color.parseColor("#BAB399"));
-		canvas.drawCircle(sbmp.getWidth() / 2 + 0.4f,
-				sbmp.getHeight() / 2 + 0.4f, sbmp.getWidth() / 2 + 0.1f, paint);
+		canvas.drawRoundRect(
+				new RectF(0, 0, sbmp.getWidth(), sbmp.getHeight()), 4, 4, paint);
+		// canvas.drawCircle(sbmp.getWidth() / 2 + 0.4f,
+		// sbmp.getHeight() / 2 + 0.4f, sbmp.getWidth() / 2 + 0.1f, paint);
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 		canvas.drawBitmap(sbmp, rect, rect, paint);
 
