@@ -35,6 +35,7 @@ import com.markupartist.android.widget.ActionBar.Action;
 
 public class WebViewActivity extends BCBActivityBaseClass {
 	private static final int SHOW_ERROR_DIALOG = 100;
+	public static final String ENABLE_LOGIN = "enable_login";
 	public static final String URL = "URLToShow";
 	WebView webView;
 
@@ -81,9 +82,23 @@ public class WebViewActivity extends BCBActivityBaseClass {
 			}
 
 			@Override
+			public void onLoadResource(WebView view, String url) {
+				if (url.contains("bcbapp://android")) {
+					Intent newIntent = new Intent(WebViewActivity.this,
+							ScheduleActivity.class);
+					newIntent.setData(Uri.parse(url));
+					startActivity(newIntent);
+					finish();
+				}
+				super.onLoadResource(view, url);
+			}
+
+			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				if (url.equals(getIntent().getStringExtra(URL))) {
 					return true;
+				} else if (getIntent().getBooleanExtra(ENABLE_LOGIN, false)) {
+					return false;
 				}
 				Log.e("Action", url);
 				Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -112,6 +127,8 @@ public class WebViewActivity extends BCBActivityBaseClass {
 				return R.drawable.refresh;
 			}
 		}, 0);
+
+		webView.requestFocus(View.FOCUS_DOWN);
 
 	}
 
