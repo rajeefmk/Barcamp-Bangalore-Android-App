@@ -33,7 +33,7 @@ import com.bangalore.barcamp.R;
 
 public class CircularImageView extends ImageView {
 
-	private int borderWidth = 4;
+	private int borderWidth = 0;
 	private int viewWidth;
 	private int viewHeight;
 	private Bitmap image;
@@ -79,10 +79,10 @@ public class CircularImageView extends ImageView {
 		paint.setAntiAlias(true);
 
 		mPainter = new Paint();
-		mPainter.setColor(Color.parseColor("#22000000"));
+		mPainter.setColor(Color.parseColor("#80000000"));
 
 		paintBorder = new Paint();
-		setBorderColor(Color.parseColor("#fed904"));
+		setBorderColor(Color.parseColor("#80ffffff"));
 		paintBorder.setAntiAlias(true);
 	}
 
@@ -125,7 +125,7 @@ public class CircularImageView extends ImageView {
 		Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
 		int circleCenter = w / 2;
 		canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()), 4, 4,
-				paintBorder);
+				mPainter);
 		// canvas.drawCircle(circleCenter + borderWidth, circleCenter
 		// + borderWidth, circleCenter + borderWidth, paintBorder);
 		canvas.drawBitmap(roundBitmap, borderWidth, borderWidth, null);

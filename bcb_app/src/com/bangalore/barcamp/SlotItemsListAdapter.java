@@ -64,11 +64,11 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 			holder = (ViewHolder) convertView.getTag();
 
 		if (holder.text1 != null) {
-			holder.text1.setText(session.title);
+			String text = session.presenter + " @ " + session.location;
+			holder.text1.setText(text);
 		}
 		if (holder.text2 != null) {
-			String text = "By " + session.presenter + " @ " + session.location;
-			holder.text2.setText(text);
+			holder.text2.setText(session.title);
 		}
 		if (holder.image != null) {
 			try {
