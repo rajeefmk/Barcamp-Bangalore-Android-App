@@ -70,7 +70,7 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 			holder.text1.setBackgroundColor(Color.parseColor(session.color));
 		}
 		if (holder.text2 != null) {
-			holder.text2.setText(session.title);
+			holder.text2.setText(session.title + " (" + session.level + ")");
 			holder.text2.setTextColor(Color.parseColor(session.color));
 		}
 		if (holder.image != null) {

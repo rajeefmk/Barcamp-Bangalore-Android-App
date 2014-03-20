@@ -62,5 +62,5 @@
              android:textColor="@color/slot_item_title_color"
              android:textSize="16sp"
              android:textStyle="bold" />
-
+         
     </RelativeLayout>
