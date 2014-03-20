@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,9 +67,11 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 		if (holder.text1 != null) {
 			String text = session.presenter + " @ " + session.location;
 			holder.text1.setText(text);
+			holder.text1.setBackgroundColor(Color.parseColor(session.color));
 		}
 		if (holder.text2 != null) {
 			holder.text2.setText(session.title);
+			holder.text2.setTextColor(Color.parseColor(session.color));
 		}
 		if (holder.image != null) {
 			try {

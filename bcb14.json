@@ -27,7 +27,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Asteroids",
             "presenter": "Viji",
-            "photo": "http://graph.facebook.com/1255925592/picture?type=square"
+            "photo": "http://graph.facebook.com/1255925592/picture?type=square",
+            "category": "Technology",
+            "level": "Intro/101",
+            "color": "#AA8E5D"
         }, {
             "id": 2799,
             "title": "Making Music with Free Software Tools",
@@ -36,7 +39,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Battleship",
             "presenter": "Vivekk",
-            "photo": "http://0.gravatar.com/avatar/4c776f36af429e9382ea60c3e43d6cb6?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/4c776f36af429e9382ea60c3e43d6cb6?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Rest of The World",
+            "level": "Intro/101",
+            "color": "#756480"
         }, {
             "id": 2930,
             "title": "Evaluating startup &amp; technology events!",
@@ -45,7 +51,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Contra",
             "presenter": "Alok",
-            "photo": "http://0.gravatar.com/avatar/4834adf6a2cc8d5bc3bc0f82e7066422?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/4834adf6a2cc8d5bc3bc0f82e7066422?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Entrepreneurship",
+            "level": "Discussion",
+            "color": "#EB9E58"
         }, {
             "id": 2974,
             "title": "Selenium Simple Test &#8211; a python web framework for functional Testing",
@@ -54,7 +63,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Diablo",
             "presenter": "fagun",
-            "photo": "http://0.gravatar.com/avatar/0e05524b54bbb749c0c29087f09ef618?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/0e05524b54bbb749c0c29087f09ef618?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Mobile and Web",
+            "level": "In-depth talks",
+            "color": "#777DD1"
         }, {
             "id": 2911,
             "title": "Profiling and Benchmarking Devices",
@@ -63,7 +75,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Everquest",
             "presenter": "Daaku",
-            "photo": "http://1.gravatar.com/avatar/7d8d90724c549fd22e200393932099b5?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/7d8d90724c549fd22e200393932099b5?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Scaling and Infrastructure",
+            "level": "Discussion",
+            "color": "#879958"
         }, {
             "id": 3162,
             "title": "Solving for Road Realities, Smartly!",
@@ -72,7 +87,10 @@
             "time": "9:30AM - 10:15AM",
             "location": "Fable",
             "presenter": "amanmanglik",
-            "photo": "http://graph.facebook.com/694556501/picture?type=square"
+            "photo": "http://graph.facebook.com/694556501/picture?type=square",
+            "category": "Bangalore & Lifestyle",
+            "level": "Discussion",
+            "color": "#7CB4F1"
         }]
     }, {
         "type": "session",
@@ -88,7 +106,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Asteroids",
             "presenter": "sivaa",
-            "photo": "http://1.gravatar.com/avatar/f8dc8fabdbce2f177e3f5029775a0587?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/f8dc8fabdbce2f177e3f5029775a0587?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Mobile and Web",
+            "level": "Intro/101",
+            "color": "#777DD1"
         }, {
             "id": 2838,
             "title": "Little Known Secrets to convey anything &amp; everything Visually !!",
@@ -97,7 +118,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Battleship",
             "presenter": "rameshkumarv",
-            "photo": "http://0.gravatar.com/avatar/c924a8e4258efbc7d88797bd26444e1a?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/c924a8e4258efbc7d88797bd26444e1a?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Rest of The World",
+            "level": "Intro/101",
+            "color": "#756480"
         }, {
             "id": 2892,
             "title": "Know your Rights &#8211; Photography laws in India.",
@@ -106,7 +130,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Contra",
             "presenter": "Ratzzz",
-            "photo": "http://1.gravatar.com/avatar/5db2fcd992206e2fd7627a85ee9b4d53?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/5db2fcd992206e2fd7627a85ee9b4d53?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Bangalore & Lifestyle",
+            "level": "Discussion",
+            "color": "#7CB4F1"
         }, {
             "id": 2923,
             "title": "Introduction to Mobile Testing",
@@ -115,7 +142,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Diablo",
             "presenter": "abilash",
-            "photo": "http://0.gravatar.com/avatar/656abcb2ce2fa83bc501da062d75fe94?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/656abcb2ce2fa83bc501da062d75fe94?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Mobile and Web",
+            "level": "Intro/101",
+            "color": "#777DD1"
         }, {
             "id": 2992,
             "title": "Meet Open Source Portal and Integration",
@@ -124,7 +154,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Everquest",
             "presenter": "chandansharma",
-            "photo": "http://0.gravatar.com/avatar/e889c5b6753c71361398ebd89ca06d1c?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/e889c5b6753c71361398ebd89ca06d1c?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Scaling and Infrastructure",
+            "level": "Discussion",
+            "color": "#879958"
         }, {
             "id": 3121,
             "title": "Interaction Design : Cognitive Walkthrough + Neilson&#8217;s Heuristics",
@@ -133,7 +166,10 @@
             "time": "10:30AM - 11:15AM",
             "location": "Fable",
             "presenter": "Vigneshwar Poojar",
-            "photo": "http://graph.facebook.com/715642499/picture?type=square"
+            "photo": "http://graph.facebook.com/715642499/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }]
     }, {
         "type": "session",
@@ -149,7 +185,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Asteroids",
             "presenter": "Raghu25289",
-            "photo": "http://0.gravatar.com/avatar/a20d888a929a9290e468708951f9c6db?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/a20d888a929a9290e468708951f9c6db?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2789,
             "title": "OpenStack in action &#8211; Powering IaaS Cloud",
@@ -158,7 +197,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Battleship",
             "presenter": "Sajid Akhtar",
-            "photo": "http://graph.facebook.com/687812219/picture?type=square"
+            "photo": "http://graph.facebook.com/687812219/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3087,
             "title": "How to Design a good User Interfaces",
@@ -167,7 +209,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Contra",
             "presenter": "arunmaroon",
-            "photo": "http://graph.facebook.com/666190459/picture?type=square"
+            "photo": "http://graph.facebook.com/666190459/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2942,
             "title": "I&#8217;m a Bloody Hacker! Let the hacking begin.",
@@ -176,7 +221,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Diablo",
             "presenter": "BloodyHacker",
-            "photo": "http://0.gravatar.com/avatar/6b7633fda88c71b4dc8831ae59b3c1b6?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/6b7633fda88c71b4dc8831ae59b3c1b6?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3099,
             "title": "Growing up as an Indian Gamer: An Insight",
@@ -185,7 +233,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Everquest",
             "presenter": "Pratik Anand",
-            "photo": "http://graph.facebook.com/1075546128/picture?type=square"
+            "photo": "http://graph.facebook.com/1075546128/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3097,
             "title": "SWeeTing Cultural Heritage",
@@ -194,7 +245,10 @@
             "time": "11:30AM - 12:15AM",
             "location": "Fable",
             "presenter": "tbdinesh",
-            "photo": "http://1.gravatar.com/avatar/b49473854236ff992023eea2aa0f1505?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/b49473854236ff992023eea2aa0f1505?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }]
     }, {
         "type": "fixed",
@@ -222,7 +276,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Asteroids",
             "presenter": "nagasahas",
-            "photo": "http://1.gravatar.com/avatar/bacfe76c85d8b3efc8ae66c4e505e858?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/bacfe76c85d8b3efc8ae66c4e505e858?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2731,
             "title": "How to keep Android open source",
@@ -231,7 +288,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Battleship",
             "presenter": "the100rabh",
-            "photo": "http://1.gravatar.com/avatar/bb6caa13742a331aad8b493034663a64?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/bb6caa13742a331aad8b493034663a64?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2767,
             "title": "Product Management ABC and D",
@@ -240,7 +300,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Contra",
             "presenter": "mtanwani",
-            "photo": "http://0.gravatar.com/avatar/2b641429191e93db0ff15d6dccda76d8?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/2b641429191e93db0ff15d6dccda76d8?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3035,
             "title": "Setting Expectations and Making Money&#8230;",
@@ -249,7 +312,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Diablo",
             "presenter": "brandbull",
-            "photo": "http://1.gravatar.com/avatar/33628f6e2ae1f9e58a1826c2dfc11b45?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/33628f6e2ae1f9e58a1826c2dfc11b45?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2934,
             "title": "Value What you throw!",
@@ -258,7 +324,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Everquest",
             "presenter": "bhoomika",
-            "photo": "http://0.gravatar.com/avatar/29f7e75063d9b0846f88c8670784ed97?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/29f7e75063d9b0846f88c8670784ed97?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3118,
             "title": "Accessibility  Beyond Guidelines",
@@ -267,7 +336,10 @@
             "time": "2:30PM - 3:15PM",
             "location": "Fable",
             "presenter": "Mohit Verma",
-            "photo": "http://0.gravatar.com/avatar/a67daf4e277bef23880480eca1478449?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/a67daf4e277bef23880480eca1478449?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }]
     }, {
         "type": "session",
@@ -283,7 +355,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Asteroids",
             "presenter": "Aditya Bhushan Dwivedi",
-            "photo": "http://graph.facebook.com/1216302536/picture?type=square"
+            "photo": "http://graph.facebook.com/1216302536/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2714,
             "title": "Stupidity on the Internet",
@@ -292,7 +367,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Battleship",
             "presenter": "sathyabhat",
-            "photo": "http://graph.facebook.com/543508896/picture?type=square"
+            "photo": "http://graph.facebook.com/543508896/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3027,
             "title": "Cooking your dev. &amp; prod. infrastructure in minutes with Chef",
@@ -301,7 +379,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Contra",
             "presenter": "Ramjee",
-            "photo": "http://1.gravatar.com/avatar/f894e77f943c94d00b1bfa72ccf84191?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/f894e77f943c94d00b1bfa72ccf84191?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2867,
             "title": "Git for fun and productivity",
@@ -310,7 +391,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Diablo",
             "presenter": "Karthik Sirasanagandla",
-            "photo": "http://1.gravatar.com/avatar/fb1d21e582835b53a7b19ffa7b6df6cb?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/fb1d21e582835b53a7b19ffa7b6df6cb?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2928,
             "title": "lend me your processors and I will give you a happier world!",
@@ -319,7 +403,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Everquest",
             "presenter": "ruchir89",
-            "photo": "http://0.gravatar.com/avatar/0a7d20e6af8fe6cf3285fd4ff911e8d6?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/0a7d20e6af8fe6cf3285fd4ff911e8d6?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 3142,
             "title": "Finding patterns",
@@ -328,7 +415,10 @@
             "time": "3:30PM - 4:15PM",
             "location": "Fable",
             "presenter": "Vundemodalu Manjush",
-            "photo": "https://2.gravatar.com/avatar/934548c48010f7af39a8f6fd5d8932f0?d=https%3A%2F%2Fidenticons.github.com%2F761db2faec7ba9bb33ba9ab7aa2eab2e.png"
+            "photo": "https://2.gravatar.com/avatar/934548c48010f7af39a8f6fd5d8932f0?d=https%3A%2F%2Fidenticons.github.com%2F761db2faec7ba9bb33ba9ab7aa2eab2e.png",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }]
     }, {
         "type": "session",
@@ -344,7 +434,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Asteroids",
             "presenter": "Mahanthesh Shadakshari",
-            "photo": "https://1.gravatar.com/avatar/d6131786a44801920e361004d2f4bd31?d=https%3A%2F%2Fidenticons.github.com%2Fbc74cd20471f9c8c9665bacef6deb51c.png"
+            "photo": "https://1.gravatar.com/avatar/d6131786a44801920e361004d2f4bd31?d=https%3A%2F%2Fidenticons.github.com%2Fbc74cd20471f9c8c9665bacef6deb51c.png",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2950,
             "title": "Lets experience Python !",
@@ -353,7 +446,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Battleship",
             "presenter": "Adil Imroz",
-            "photo": "http://graph.facebook.com/100000249718194/picture?type=square"
+            "photo": "http://graph.facebook.com/100000249718194/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2812,
             "title": "Ember.js: A framework for creating ambitious web applications",
@@ -362,7 +458,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Contra",
             "presenter": "gauthamns",
-            "photo": "http://1.gravatar.com/avatar/9e6def4895a9697d59e65dcde9f26349?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://1.gravatar.com/avatar/9e6def4895a9697d59e65dcde9f26349?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2846,
             "title": "All about playing the Guitar",
@@ -371,7 +470,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Diablo",
             "presenter": "prathap",
-            "photo": "http://0.gravatar.com/avatar/81bac959fcacec4ba50267af482558e5?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/81bac959fcacec4ba50267af482558e5?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2952,
             "title": "Smartphone In India: Durby Of Two OSs",
@@ -380,7 +482,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Everquest",
             "presenter": "Amit Misra",
-            "photo": "http://graph.facebook.com/1239473836/picture?type=square"
+            "photo": "http://graph.facebook.com/1239473836/picture?type=square",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }, {
             "id": 2792,
             "title": "Introduction to Perl Programming",
@@ -389,7 +494,10 @@
             "time": "4:30PM - 5:15PM",
             "location": "Fable",
             "presenter": "perlsaran",
-            "photo": "http://0.gravatar.com/avatar/6ccdc9d77411ed92f73539dc256dc17e?s=96&amp;d=wavatar&amp;r=G"
+            "photo": "http://0.gravatar.com/avatar/6ccdc9d77411ed92f73539dc256dc17e?s=96&amp;d=wavatar&amp;r=G",
+            "category": "Design",
+            "level": "Intro/101",
+            "color": "#D35D5D"
         }]
     }, {
         "type": "fixed",
