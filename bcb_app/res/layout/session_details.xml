@@ -25,53 +25,43 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.38"
                 android:background="@drawable/session_title_header"
                 android:orientation="vertical" >
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/title"
-                    android:orientation="horizontal" >
-
-                    <com.bangalore.barcamp.widgets.CircularImageView
-                        android:id="@+id/authorImage"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="0dp"
-                        android:src="@drawable/bcb_logo"
-                        custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
-
-                    <TextView
-                        android:id="@+id/presenter"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/session_author_background"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
-                        android:text="@string/by_user"
-                        android:textColor="@color/session_author_color"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="22dp"
-                    android:layout_marginTop="17dp"
                     android:paddingLeft="10dp"
+                    android:layout_marginLeft="80dp"
                     android:text="Title"
                     android:textColor="@color/session_title_color"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/presenter"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/title"
+                    android:layout_below="@+id/title"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/session_author_background"
+                    android:paddingLeft="10dp"
+                    android:text="@string/by_user"
+                    android:textColor="@color/session_author_color"
+                    android:textSize="13sp"
+                    android:drawableLeft="@+id/authorImage" />
+                
+                <com.bangalore.barcamp.widgets.CircularImageView
+                    android:id="@+id/authorImage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="0dp"
+                    android:src="@drawable/bcb_logo"
+                    custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
             </RelativeLayout>
 
@@ -115,7 +105,7 @@
                         android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-                    
+
                     <TextView
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
@@ -131,9 +121,9 @@
                     android:id="@+id/location_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/session_location_body_background"
                     android:orientation="horizontal" >
 
@@ -147,7 +137,7 @@
                         android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-                    
+
                     <TextView
                         android:id="@+id/location"
                         android:layout_width="170dp"
@@ -156,12 +146,12 @@
                         android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-                    
-                    <RelativeLayout 
+
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="0dp">
-                        
+                        android:layout_margin="0dp" >
+
                         <ImageView
                             android:id="@+id/location_marker"
                             android:layout_width="30dp"
@@ -169,33 +159,32 @@
                             android:layout_marginTop="5dp"
                             android:src="@drawable/venue" />
 
-	                    <ImageView
-	                        android:id="@+id/location_arrow"
-	                        android:layout_width="20dp"
-	                        android:layout_height="20dp"
-	                        android:layout_alignParentBottom="true"
-	                        android:layout_alignParentRight="true"
-	                        android:layout_alignTop="@+id/location_marker"
-	                        android:contentDescription="Location"
-	                        android:src="@drawable/right_arrow" />
-
+                        <ImageView
+                            android:id="@+id/location_arrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignTop="@+id/location_marker"
+                            android:contentDescription="Location"
+                            android:src="@drawable/right_arrow" />
                     </RelativeLayout>
                 </LinearLayout>
 
-                
                 <CheckBox
                     android:id="@+id/checkBox1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:gravity="left|bottom"
                     android:paddingBottom="15dp"
                     android:paddingTop="10dp"
-                    android:gravity="left|bottom"
                     android:text="@string/i_am_attending"
                     android:textColor="#000000" />
             </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
