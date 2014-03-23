@@ -52,14 +52,14 @@
                     android:paddingLeft="10dp"
                     android:text="@string/by_user"
                     android:textColor="@color/session_author_color"
-                    android:textSize="13sp"
-                    android:drawableLeft="@+id/authorImage" />
-                
+                    android:textSize="13sp"/>
+
                 <com.bangalore.barcamp.widgets.CircularImageView
                     android:id="@+id/authorImage"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_margin="0dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/presenter"
                     android:src="@drawable/bcb_logo"
                     custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
