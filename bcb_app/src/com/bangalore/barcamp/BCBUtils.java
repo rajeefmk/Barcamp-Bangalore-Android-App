@@ -71,7 +71,7 @@ public class BCBUtils {
 	private static final int MAX_LOG = 2000;
 	// private static final String BARCAMP_SCHEDULE_JSON =
 	// "http://barcampbangalore.org/schadmin/android.json";
-	private static final String BARCAMP_SCHEDULE_JSON = "http://10.0.2.2/bcb14.json";
+	private static final String BARCAMP_SCHEDULE_JSON = "http://192.168.2.8/bcb14.json";
 	private static final String BCB_LOCATION_MAPS_URL = "https://www.google.co.in/maps?t=m&cid=0x9ed33f443055ef5f&z=17&iwloc=A";
 	protected static final int START_SCHEDULE = 100;
 	protected static final int START_ABOUT = 101;

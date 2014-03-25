@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/title"
                     android:layout_below="@+id/title"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="7dp"
                     android:background="@drawable/session_author_background"
                     android:paddingLeft="10dp"
                     android:text="@string/by_user"
@@ -58,9 +58,10 @@
                     android:id="@+id/authorImage"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_alignParentBottom="true"
                     android:layout_toLeftOf="@+id/presenter"
+                    android:layout_marginTop="25dp"
                     android:src="@drawable/bcb_logo"
+                    android:drawablePadding="10dp"
                     custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
             </RelativeLayout>

@@ -22,6 +22,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,9 +66,12 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 			holder = (ViewHolder) convertView.getTag();
 
 		if (holder.text1 != null) {
-			String text = session.presenter + " @ " + session.location;
-			holder.text1.setText(text);
-			holder.text1.setBackgroundColor(Color.parseColor(session.color));
+			String text = session.presenter;
+			holder.text1.setText(text + "@ " + session.location);
+			holder.text1
+					.setBackgroundResource(R.drawable.session_list_item_title_background_drawable);
+			holder.text1.getBackground().setColorFilter(
+					Color.parseColor(session.color), PorterDuff.Mode.SCREEN);
 		}
 		if (holder.text2 != null) {
 			holder.text2.setText(session.title + " (" + session.level + ")");
