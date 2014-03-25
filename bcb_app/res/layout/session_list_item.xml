@@ -14,18 +14,19 @@
             android:id="@android:id/text2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_below="@android:id/text1"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/session_list_item_body_background_drawable"
             android:gravity="left"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
             android:text="Text2"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="sans" />
-
         
       <!--   <ImageView
             android:id="@+id/imageView1"
@@ -43,7 +44,7 @@
              android:layout_width="50dp"
              android:layout_height="50dp"
              android:layout_alignParentLeft="true"
-             android:layout_marginLeft="10dp"
+             android:layout_alignParentTop="true"
              android:src="@drawable/bcb_logo"
              custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
@@ -51,16 +52,18 @@
              android:id="@android:id/text1"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_alignBottom="@+id/imageView1"
+             android:layout_alignTop="@id/imageView1"
+             android:layout_marginTop="15dp"
              android:layout_toRightOf="@+id/imageView1"
              android:background="@drawable/session_list_item_title_background_drawable"
-             android:paddingBottom="5dp"
+             android:gravity="left|center_vertical"
+             android:paddingBottom="2dp"
              android:paddingLeft="5dp"
              android:paddingRight="5dp"
-             android:paddingTop="5dp"
+             android:paddingTop="2dp"
              android:text="Text1"
              android:textColor="@color/slot_item_title_color"
-             android:textSize="16sp"
+             android:textSize="12sp"
              android:textStyle="bold" />
          
     </RelativeLayout>

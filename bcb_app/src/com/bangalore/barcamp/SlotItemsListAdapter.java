@@ -21,8 +21,13 @@ import java.net.URL;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,8 +75,10 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 			holder.text1.setText(text + "@ " + session.location);
 			holder.text1
 					.setBackgroundResource(R.drawable.session_list_item_title_background_drawable);
-			holder.text1.getBackground().setColorFilter(
-					Color.parseColor(session.color), PorterDuff.Mode.SCREEN);
+			holder.text1.setBackgroundDrawable(new MyDrawable(session.color));
+
+			// holder.text1.getBackground().setColorFilter(
+			// Color.parseColor(session.color), PorterDuff.Mode.SCREEN);
 		}
 		if (holder.text2 != null) {
 			holder.text2.setText(session.title + " (" + session.level + ")");
@@ -87,6 +94,49 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 		}
 
 		return convertView;
+	}
+
+	public class MyDrawable extends Drawable {
+
+		private Paint mPainter;
+
+		public MyDrawable(String color) {
+			mPainter = new Paint();
+			mPainter.setAntiAlias(true);
+			mPainter.setColor(Color.parseColor(color));
+
+		}
+
+		@Override
+		public void setColorFilter(ColorFilter cf) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void setAlpha(int alpha) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public int getOpacity() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public void draw(Canvas canvas) {
+
+			Rect rect = getBounds();
+			RectF rectF = new RectF(rect);
+			canvas.drawRoundRect(rectF, 3, 3, mPainter);
+			rectF.right = rectF.right - 10;
+			canvas.drawRect(rectF, mPainter);
+			rect.top = rect.top + 10;
+			canvas.drawRect(rect, mPainter);
+
+		}
 	}
 
 	@Override
