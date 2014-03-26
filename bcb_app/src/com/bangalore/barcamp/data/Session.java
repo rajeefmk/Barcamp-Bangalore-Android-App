@@ -29,4 +29,7 @@ public class Session implements Serializable {
 	public String id;
 	public String description;
 	public String photo;
+	public String color;
+	public String category;
+	public String level;
 }
