@@ -287,7 +287,7 @@ public class CircularImageView extends ImageView {
 				}
 				synchronized (fileWriterMonitor) {
 
-					if (!file.exists()) {
+					if (!file.exists() && bitmap != null) {
 						FileOutputStream fos;
 						try {
 							fos = new FileOutputStream(file);
