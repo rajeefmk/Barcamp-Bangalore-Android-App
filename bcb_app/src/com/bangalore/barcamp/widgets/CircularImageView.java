@@ -234,7 +234,7 @@ public class CircularImageView extends ImageView {
 
 	public void setImageURL(URL url) {
 		setImageDrawable(getContext().getResources().getDrawable(
-				R.drawable.bcb_logo));
+				R.drawable.bcb_logo_opaque));
 		invalidate();
 		synchronized (loadingMonitor) {
 			cancelLoading();

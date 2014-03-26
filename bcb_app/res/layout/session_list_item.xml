@@ -45,7 +45,7 @@
              android:layout_height="50dp"
              android:layout_alignParentLeft="true"
              android:layout_alignParentTop="true"
-             android:src="@drawable/bcb_logo"
+             android:src="@drawable/bcb_logo_opaque"
              custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
          <TextView
