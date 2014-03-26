@@ -83,6 +83,10 @@ public class DataProcessingUtils {
 							session.photo = session.photo.replace("&amp;", "&");
 							if (session.photo.equals("null"))
 								session.photo = "http://1.gravatar.com/avatar/f8dc8fabdbce2f177e3f5029775a0587?s=96&d=wavatar&r=G";
+							session.color = jsonSession.getString("color");
+							session.category = jsonSession
+									.getString("category");
+							session.level = jsonSession.getString("level");
 							sessionList.add(session);
 						}
 						slot.sessionsArray = sessionList;

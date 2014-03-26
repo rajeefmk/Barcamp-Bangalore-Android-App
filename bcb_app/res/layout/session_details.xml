@@ -23,48 +23,51 @@
             android:orientation="vertical"
             android:padding="10dp" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.38"
                 android:background="@drawable/session_title_header"
-                android:orientation="horizontal" >
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="60dp"
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Title"
+                    android:textColor="@color/session_title_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <com.bangalore.barcamp.widgets.CircularImageView
                     android:id="@+id/authorImage"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_margin="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="15dp"
+                    android:drawablePadding="10dp"
                     android:src="@drawable/bcb_logo"
                     custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:id="@+id/presenter"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:paddingLeft="10dp"
-                        android:text="Title"
-                        android:textColor="@color/session_title_color"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/presenter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
-                        android:text="@string/by_user"
-                        android:textColor="@color/session_author_color"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
+                    android:layout_below="@+id/title"
+                    android:layout_toRightOf="@+id/authorImage"
+                    android:background="@drawable/session_author_background"
+                    android:paddingLeft="10dp"
+                    android:text="@string/by_user"
+                    android:textColor="@color/session_author_color"
+                    android:textSize="13sp" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,21 +105,10 @@
                         android:paddingBottom="10dp"
                         android:paddingLeft="10dp"
                         android:paddingTop="10dp"
-                        android:text="@string/when_where"
-                        android:textColor="#fff"
+                        android:text="@string/when"
+                        android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/session_location_body_background"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="5dp" >
 
                     <TextView
                         android:id="@+id/time"
@@ -124,47 +116,58 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:textColor="#fff"
+                        android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/location_layout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/session_venue_location_background"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="5dp"
-                    android:layout_marginTop="20dp" >
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/session_location_body_background"
+                    android:orientation="horizontal" >
 
-                    <ImageView
-                        android:id="@+id/imageView1"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:src="@drawable/internal_venue_left" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/at_symbol"
-                        android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/where"
+                        android:textColor="#777777"
+                        android:textSize="16sp"
+                        android:textStyle="bold" 
+                        android:layout_weight="0"/>
 
                     <TextView
                         android:id="@+id/location"
-                        android:layout_width="wrap_content"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:textColor="#fff"
+                        android:layout_weight="1" android:paddingLeft="5dp"
+                        android:textColor="#777777"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:id="@+id/location_marker"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0"
+                        android:src="@drawable/venue" />
+
+                    <ImageView
+                        android:id="@+id/location_arrow"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0"
+                        android:contentDescription="Location"
+                        android:src="@drawable/right_arrow" />
                 </LinearLayout>
 
                 <CheckBox
@@ -173,9 +176,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:gravity="left|bottom"
                     android:paddingBottom="15dp"
                     android:paddingTop="10dp"
-                    android:gravity="left|bottom"
                     android:text="@string/i_am_attending"
                     android:textColor="#000000" />
             </LinearLayout>
