@@ -5,7 +5,7 @@ BCB App Github.apk
 BCB App Github_2.apk
 BCB App Github_3.apk
 BCB App Github_4.apk
-actionbar/bin/actionbarlibraryproject - github.jar
+actionbar/bin/
 actionbar/bin/AndroidManifest.xml
 actionbar/bin/R.txt
 actionbar/bin/classes/com/markupartist/android/widget/ActionBar$AbstractAction.class
@@ -80,7 +80,9 @@ slidingmenu/library/bin/res/drawable-mdpi/ic_launcher.png
 slidingmenu/library/bin/res/drawable-xhdpi/ic_launcher.png
 slidingmenu/library/gen/com/slidingmenu/lib/BuildConfig.java
 slidingmenu/library/gen/com/slidingmenu/lib/R.java
-actionbar/bin/jarlist.cache
-slidingmenu/library/bin/jarlist.cache
+actionbar/bin/
+slidingmenu/library/bin/
 BCB App Github_5.apk
 BCB App Github_6.apk
+/.project
+
