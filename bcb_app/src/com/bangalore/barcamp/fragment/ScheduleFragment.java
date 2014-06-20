@@ -21,18 +21,19 @@ import android.widget.TextView;
 import com.bangalore.barcamp.BCBSharedPrefUtils;
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.SlotsListAdapter;
+import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
 import com.bangalore.barcamp.activity.LoginActivity;
+import com.bangalore.barcamp.activity.MainFragmentActivity;
 import com.bangalore.barcamp.activity.SlotDetailsActivity;
-import com.bangalore.barcamp.data.BCBUpdatesMessage;
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
 import com.bangalore.barcamp.data.Slot;
-import com.bangalore.barcamp.database.MessagesDataSource;
 
 public class ScheduleFragment extends BCBFragmentBaseClass {
 
 	private List<Slot> slotsArray;
 	private SlotsListAdapter adapter;
+	public static final int CALL_REFRESH_DATA = 1;
 	private static final int SHOW_ERROR_DIALOG = 100;
 	private static final String BCB_DATA = "BCBData";
 	private static final String LIST_POS = "ListPos";
@@ -48,10 +49,6 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 		}
 
 		View view = inflater.inflate(R.layout.schedule, null);
-		// setContentView(R.layout.schedule);
-
-		// BCBUtils.createActionBarOnActivity(this);
-		// BCBUtils.addNavigationActions(this);
 
 		BarcampData data = ((BarcampBangalore) getActivity()
 				.getApplicationContext()).getBarcampData();
@@ -62,47 +59,6 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 					.setBarcampData((BarcampData) savedInstanceState
 							.getSerializable(BCB_DATA));
 		}
-
-		// ActionBar actionbar = (ActionBar) view.findViewById(R.id.actionBar1);
-		// actionbar.addAction(new Action() {
-		//
-		// @Override
-		// public void performAction(View arg0) {
-		// if (task == null) {
-		// findViewById(R.id.spinnerLayout)
-		// .setVisibility(View.VISIBLE);
-		// findViewById(R.id.infoText).setVisibility(View.GONE);
-		// findViewById(R.id.listView1).setVisibility(View.GONE);
-		// task = new FetchScheduleAsyncTask();
-		// task.execute();
-		// }
-		// }
-		//
-		// @Override
-		// public int getDrawable() {
-		// return R.drawable.refresh;
-		// }
-		// }, 0);
-
-		// if (!GCMUtils.isRegistered(this)) {
-		// Intent registrationIntent = new Intent(
-		// "com.google.android.c2dm.intent.REGISTER");
-		// // sets the app name in the intent
-		// registrationIntent.putExtra("app",
-		// PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-		// registrationIntent.putExtra("sender", SENDER_ID);
-		// startService(registrationIntent);
-		// }
-
-		// if (getIntent().getBooleanExtra(FROM_NOTIFICATION, false)) {
-		// }
-
-		MessagesDataSource ds = new MessagesDataSource(getActivity()
-				.getApplicationContext());
-		ds.open();
-		List<BCBUpdatesMessage> list = ds.getAllMessages();
-		ds.close();
-
 		return view;
 	}
 
@@ -158,6 +114,43 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 			infoText.setText(Html.fromHtml(data.status));
 			infoText.setVisibility(View.VISIBLE);
 			view.findViewById(R.id.listView1).setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public Intent callForFunction(int id, Intent params) {
+		if (id == CALL_REFRESH_DATA) {
+			BarcampData data = ((BarcampBangalore) getActivity()
+					.getApplicationContext()).getBarcampData();
+
+			updateViews(data);
+			return null;
+		}
+		return super.callForFunction(id, params);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		if (BCBSharedPrefUtils.getScheduleUpdated(getActivity())) {
+			((BarcampBangalore) getActivity().getApplicationContext())
+					.setBarcampData(null);
+			BCBSharedPrefUtils.setScheduleUpdated(getActivity(), false);
+		}
+		BarcampData data = ((BarcampBangalore) getActivity()
+				.getApplicationContext()).getBarcampData();
+		BCBFragmentActionbarActivity activity = (BCBFragmentActionbarActivity) getActivity();
+		if (data == null) {
+			View view = getView();
+			view.findViewById(R.id.listView1).setVisibility(View.GONE);
+			view.findViewById(R.id.infoText).setVisibility(View.GONE);
+			activity.callForFunction(MainFragmentActivity.CALL_REFRESH, null);
+
+		} else {
+			activity.callForFunction(
+					MainFragmentActivity.DISMISS_PROGRESS_DIALOG, null);
+			updateViews(data);
 		}
 	}
 

@@ -8,7 +8,8 @@
 
     <com.markupartist.android.widget.ActionBar
         android:id="@+id/actionBar1"
-        style="@style/ActionBar" >
+        style="@style/ActionBar" 
+        android:visibility="gone">
     </com.markupartist.android.widget.ActionBar>
 
     <TextView

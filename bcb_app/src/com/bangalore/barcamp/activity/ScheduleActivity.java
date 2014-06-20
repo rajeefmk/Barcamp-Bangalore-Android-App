@@ -74,9 +74,11 @@ public class ScheduleActivity extends BCBActivityBaseClass {
 	public void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
+
 		if (TextUtils.isEmpty(BCBSharedPrefUtils.getUserID(this))) {
-			startActivity(new Intent(this, LoginActivity.class));
+			// startActivity(new Intent(this, LoginActivity.class));
 		}
+		startActivity(new Intent(this, MainFragmentActivity.class));
 
 		setContentView(R.layout.schedule);
 

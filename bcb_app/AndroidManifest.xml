@@ -100,7 +100,7 @@
     </receiver>
         <activity android:name=".activity.MainFragmentActivity" 
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/CustomActionBarThemee"
             />
     </application>
 
