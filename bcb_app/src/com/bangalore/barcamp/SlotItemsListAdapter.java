@@ -73,10 +73,12 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 		if (holder.text1 != null) {
 			String text = session.presenter;
 			holder.text1.setText(text + "@ " + session.location);
-			holder.text1
-					.setBackgroundResource(R.drawable.session_list_item_title_background_drawable);
-			holder.text1.setBackgroundDrawable(new MyDrawable(session.color));
-
+			// holder.text1
+			// .setBackgroundResource(R.drawable.session_list_item_title_background_drawable);
+			// holder.text1.setBackgroundDrawable(new
+			// MyDrawable(session.color));
+			holder.text1.setBackgroundColor(Color.parseColor(session.color));
+			holder.text1.invalidate();
 			// holder.text1.getBackground().setColorFilter(
 			// Color.parseColor(session.color), PorterDuff.Mode.SCREEN);
 		}

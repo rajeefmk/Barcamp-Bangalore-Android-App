@@ -34,6 +34,7 @@ import com.bangalore.barcamp.data.Session;
 import com.bangalore.barcamp.data.Slot;
 import com.bangalore.barcamp.database.MessagesDataSource;
 import com.bangalore.barcamp.fragment.ScheduleFragment;
+import com.bangalore.barcamp.fragment.SlotDetailsFragment;
 import com.bangalore.barcamp.gcm.GCMUtils;
 import com.bangalore.barcamp.utils.BCBFragmentUtils;
 
@@ -45,6 +46,7 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	public final static int CALL_REFRESH = 0;
 	public static final int DISMISS_PROGRESS_DIALOG = 1;
+	public static final int CALL_SLOT_DETAILS = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -267,7 +269,9 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 			FragmentManager frManager = getSupportFragmentManager();
 			MyAlertDialogFragment fragment = MyAlertDialogFragment
 					.newInstance(0);
+			fragment.setCancelable(false);
 			fragment.show(getSupportFragmentManager(), "dialog");
+
 			return null;
 		} else if (id == DISMISS_PROGRESS_DIALOG) {
 			FragmentManager frManager = getSupportFragmentManager();
@@ -277,6 +281,13 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 				fragment.dismiss();
 			}
 			return null;
+		} else if (id == CALL_SLOT_DETAILS) {
+			FragmentManager frManager = getSupportFragmentManager();
+
+			SlotDetailsFragment fragment = new SlotDetailsFragment();
+			fragment.setIntent(params);
+			frManager.beginTransaction().replace(R.id.content_frame, fragment)
+					.addToBackStack("slot").commit();
 		}
 		return super.callForFunction(id, params);
 	}

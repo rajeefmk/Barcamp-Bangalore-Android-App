@@ -4,12 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background_new"
     android:orientation="vertical" >
-
-    <com.markupartist.android.widget.ActionBar
-        android:id="@+id/actionBar1"
-        style="@style/ActionBar" >
-    </com.markupartist.android.widget.ActionBar>
-
+   
     <ListView
         android:id="@+id/listView1"
         android:layout_width="fill_parent"

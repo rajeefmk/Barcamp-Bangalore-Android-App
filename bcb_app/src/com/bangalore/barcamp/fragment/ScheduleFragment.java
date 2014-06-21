@@ -50,6 +50,12 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 
 		View view = inflater.inflate(R.layout.schedule, null);
 
+		return view;
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		BarcampData data = ((BarcampBangalore) getActivity()
 				.getApplicationContext()).getBarcampData();
 
@@ -59,7 +65,6 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 					.setBarcampData((BarcampData) savedInstanceState
 							.getSerializable(BCB_DATA));
 		}
-		return view;
 	}
 
 	private void addScheduleItems(List<Slot> slotsArray) {
@@ -77,7 +82,10 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 					Intent intent = new Intent(getActivity(),
 							SlotDetailsActivity.class);
 					intent.putExtra(SlotDetailsActivity.EXTRA_POS, pos);
-					startActivity(intent);
+					((BCBFragmentActionbarActivity) getActivity())
+							.callForFunction(
+									MainFragmentActivity.CALL_SLOT_DETAILS,
+									intent);
 				}
 			}
 		});
