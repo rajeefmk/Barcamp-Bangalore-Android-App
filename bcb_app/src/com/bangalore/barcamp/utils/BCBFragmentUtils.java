@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
@@ -14,14 +16,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.bangalore.barcamp.R;
-import com.bangalore.barcamp.activity.AboutActivity;
 import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
-import com.bangalore.barcamp.activity.InternalVenueMapActivity;
-import com.bangalore.barcamp.activity.ScheduleActivity;
-import com.bangalore.barcamp.activity.SettingsActivity;
-import com.bangalore.barcamp.activity.ShareActivity;
 import com.bangalore.barcamp.activity.UpdateMessagesActivity;
 import com.bangalore.barcamp.activity.WebViewActivity;
+import com.bangalore.barcamp.fragment.AboutFragment;
+import com.bangalore.barcamp.fragment.BCBInternalVenueMapFragment;
+import com.bangalore.barcamp.fragment.ScheduleFragment;
+import com.bangalore.barcamp.fragment.ShareFragment;
 
 public class BCBFragmentUtils {
 
@@ -36,7 +37,8 @@ public class BCBFragmentUtils {
 	private static final String BCB_LOCATION_MAPS_URL = "https://www.google.co.in/maps?t=m&cid=0x9ed33f443055ef5f&z=17&iwloc=A";
 
 	public static ActionBarDrawerToggle setupActionBar(
-			BCBFragmentActionbarActivity activity, final String drawerTitle) {
+			final BCBFragmentActionbarActivity activity,
+			final String drawerTitle) {
 		DrawerLayout mDrawerLayout = (DrawerLayout) activity
 				.findViewById(R.id.drawer_layout);
 		final ActionBar actionbar = activity.getSupportActionBar();
@@ -48,7 +50,7 @@ public class BCBFragmentUtils {
 			public void onDrawerClosed(View view) {
 				super.onDrawerClosed(view);
 				actionbar.setTitle(drawerTitle);
-				// invalidateOptionsMenu(); // creates call to
+				activity.supportInvalidateOptionsMenu(); // creates call to
 				// onPrepareOptionsMenu()
 			}
 
@@ -56,6 +58,7 @@ public class BCBFragmentUtils {
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
 				actionbar.setTitle(drawerTitle);
+				activity.supportInvalidateOptionsMenu();
 				// invalidateOptionsMenu(); // creates call to
 				// onPrepareOptionsMenu()
 
@@ -68,7 +71,7 @@ public class BCBFragmentUtils {
 		actionbar.setDisplayHomeAsUpEnabled(true);
 		actionbar.setHomeButtonEnabled(true);
 
-		actionbar.setTitle("Barcamp Bangalore Monsoon 2014");
+		actionbar.setTitle("BCB");
 		return mDrawerToggle;
 	}
 
@@ -80,8 +83,17 @@ public class BCBFragmentUtils {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(homeActivity, ScheduleActivity.class);
-				homeActivity.startActivityForResult(intent, START_SCHEDULE);
+				Intent intent = new Intent(homeActivity, ScheduleFragment.class);
+				FragmentManager frManager = homeActivity
+						.getSupportFragmentManager();
+				while (frManager.getBackStackEntryCount() > 0) {
+					frManager.popBackStackImmediate();
+				}
+				FragmentTransaction ft = frManager.beginTransaction();
+				ft.replace(R.id.content_frame, new ScheduleFragment());
+				ft.commit();
+				homeActivity.hideDrawer();
+
 			}
 		});
 
@@ -90,8 +102,9 @@ public class BCBFragmentUtils {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(homeActivity, AboutActivity.class);
-				homeActivity.startActivityForResult(intent, START_ABOUT);
+				Intent intent = new Intent(homeActivity, AboutFragment.class);
+				homeActivity.callForFunction(
+						BCBFragmentActionbarActivity.START_FRAGMENT, intent);
 			}
 		});
 
@@ -101,9 +114,9 @@ public class BCBFragmentUtils {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(homeActivity,
-						InternalVenueMapActivity.class);
-				homeActivity.startActivityForResult(intent,
-						START_INTERNAL_VENUE);
+						BCBInternalVenueMapFragment.class);
+				homeActivity.callForFunction(
+						BCBFragmentActionbarActivity.START_FRAGMENT, intent);
 			}
 		});
 
@@ -112,8 +125,7 @@ public class BCBFragmentUtils {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(homeActivity, SettingsActivity.class);
-				homeActivity.startActivityForResult(intent, START_SETTINGS);
+
 			}
 		});
 		view.setVisibility(View.GONE);
@@ -123,8 +135,10 @@ public class BCBFragmentUtils {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(homeActivity, ShareActivity.class);
-				homeActivity.startActivityForResult(intent, START_SHARE);
+				Intent intent = new Intent(homeActivity, ShareFragment.class);
+				homeActivity.callForFunction(
+						BCBFragmentActionbarActivity.START_FRAGMENT, intent);
+				homeActivity.hideDrawer();
 			}
 		});
 
@@ -133,6 +147,7 @@ public class BCBFragmentUtils {
 
 			@Override
 			public void onClick(View v) {
+
 				Intent intent = new Intent(homeActivity, WebViewActivity.class);
 				intent.putExtra(WebViewActivity.URL,
 						"file:///android_asset/bcb11_updates.html");

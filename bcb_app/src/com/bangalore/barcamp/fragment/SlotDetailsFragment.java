@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.SlotItemsListAdapter;
-import com.bangalore.barcamp.activity.SessionDetailsActivity;
+import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
 import com.bangalore.barcamp.data.Slot;
@@ -62,12 +62,14 @@ public class SlotDetailsFragment extends BCBFragmentBaseClass {
 			public void onItemClick(AdapterView<?> parent, View view, int pos,
 					long id) {
 				Intent intent = new Intent(getActivity(),
-						SessionDetailsActivity.class);
-				intent.putExtra(SessionDetailsActivity.EXTRA_SESSION_POSITION,
+						SessionDetailsFragment.class);
+				intent.putExtra(SessionDetailsFragment.EXTRA_SESSION_POSITION,
 						pos);
-				intent.putExtra(SessionDetailsActivity.EXTRA_SLOT_POS,
+				intent.putExtra(SessionDetailsFragment.EXTRA_SLOT_POS,
 						getIntent().getIntExtra(EXTRA_POS, 0));
-				startActivity(intent);
+				BCBFragmentActionbarActivity activity = (BCBFragmentActionbarActivity) getActivity();
+				activity.callForFunction(
+						BCBFragmentActionbarActivity.START_FRAGMENT, intent);
 			}
 		});
 	}

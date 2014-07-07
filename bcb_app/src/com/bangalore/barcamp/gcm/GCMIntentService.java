@@ -29,9 +29,11 @@ import android.util.Log;
 
 import com.bangalore.barcamp.BCBSharedPrefUtils;
 import com.bangalore.barcamp.R;
-import com.bangalore.barcamp.activity.ScheduleActivity;
+import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
+import com.bangalore.barcamp.activity.MainFragmentActivity;
 import com.bangalore.barcamp.activity.UpdateMessagesActivity;
 import com.bangalore.barcamp.database.MessagesDataSource;
+import com.bangalore.barcamp.fragment.ScheduleFragment;
 
 public class GCMIntentService extends IntentService {
 
@@ -90,9 +92,13 @@ public class GCMIntentService extends IntentService {
 			contentText = intent.getStringExtra("message");
 			contentTitle = "Schedule Updated";
 			tickerText = "Schedule Updated";
-			Intent notificationIntent = new Intent(this, ScheduleActivity.class);
+			Intent notificationIntent = new Intent(this,
+					MainFragmentActivity.class);
+			notificationIntent.putExtra(
+					BCBFragmentActionbarActivity.FRAGMENT_TARGET,
+					ScheduleFragment.class);
 			BCBSharedPrefUtils.setScheduleUpdated(this, true);
-			notificationIntent.putExtra(ScheduleActivity.FROM_NOTIFICATION,
+			notificationIntent.putExtra(ScheduleFragment.FROM_NOTIFICATION,
 					true);
 
 			PendingIntent contentIntent = PendingIntent.getActivity(this, 100,

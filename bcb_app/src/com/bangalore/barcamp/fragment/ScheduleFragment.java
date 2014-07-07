@@ -24,7 +24,6 @@ import com.bangalore.barcamp.SlotsListAdapter;
 import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
 import com.bangalore.barcamp.activity.LoginActivity;
 import com.bangalore.barcamp.activity.MainFragmentActivity;
-import com.bangalore.barcamp.activity.SlotDetailsActivity;
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
 import com.bangalore.barcamp.data.Slot;
@@ -80,8 +79,8 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 				if (ScheduleFragment.this.slotsArray.get(pos).type
 						.equals(Slot.SESSION)) {
 					Intent intent = new Intent(getActivity(),
-							SlotDetailsActivity.class);
-					intent.putExtra(SlotDetailsActivity.EXTRA_POS, pos);
+							SlotDetailsFragment.class);
+					intent.putExtra(SlotDetailsFragment.EXTRA_POS, pos);
 					((BCBFragmentActionbarActivity) getActivity())
 							.callForFunction(
 									MainFragmentActivity.CALL_SLOT_DETAILS,
@@ -103,9 +102,10 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(context, SlotDetailsActivity.class);
-			intent.putExtra(SlotDetailsActivity.EXTRA_POS, slot.pos);
-			context.startActivity(intent);
+			Intent intent = new Intent(context, SlotDetailsFragment.class);
+			intent.putExtra(SlotDetailsFragment.EXTRA_POS, slot.pos);
+			((BCBFragmentActionbarActivity) getActivity()).callForFunction(
+					MainFragmentActivity.CALL_SLOT_DETAILS, intent);
 		}
 	}
 

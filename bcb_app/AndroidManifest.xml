@@ -5,7 +5,9 @@
     android:versionCode="5"
     android:versionName="4.0" >
 
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="16" />
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -33,12 +35,13 @@
         android:name=".data.BarcampBangalore"
         android:icon="@drawable/bcb_logo"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@style/CustomActionBarTheme" >
         <activity
-            android:name=".activity.ScheduleActivity"
+            android:name=".activity.MainFragmentActivity"
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:theme="@style/CustomActionBarTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,6 +49,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -61,13 +65,15 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.WebViewActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:theme="@style/CustomActionBarTheme" />
         <activity
             android:name=".activity.AboutActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.UpdateMessagesActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:theme="@style/CustomActionBarTheme" />
         <activity
             android:name=".activity.LocationActivity"
             android:launchMode="singleTask" />
@@ -94,14 +100,10 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".NetworkStateReceiver" >
-        <intent-filter>
-            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-        </intent-filter>
-    </receiver>
-        <activity android:name=".activity.MainFragmentActivity" 
-            android:launchMode="singleTask"
-            android:theme="@style/CustomActionBarThemee"
-            />
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

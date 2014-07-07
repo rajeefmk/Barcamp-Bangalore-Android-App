@@ -22,8 +22,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.internal.view.ActionBarPolicy;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -33,18 +37,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bangalore.barcamp.BCBSharedPrefUtils;
-import com.bangalore.barcamp.BCBUtils;
 import com.bangalore.barcamp.R;
+import com.bangalore.barcamp.utils.BCBFragmentUtils;
 
-public class ShareActivity extends BCBActivityBaseClass {
+public class ShareActivity extends BCBFragmentActionbarActivity {
 	public static final String SHARE_STRING = "Share String";
+	private ActionBarDrawerToggle mDrawerToggle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.share_screen);
-		BCBUtils.createActionBarOnActivity(this);
-		BCBUtils.addNavigationActions(this);
+		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, "BCB");
+
+		// BCBUtils.createActionBarOnActivity(this);
+		// BCBUtils.addNavigationActions(this);
 		((EditText) findViewById(R.id.editText1))
 				.addTextChangedListener(new TextWatcher() {
 
@@ -123,5 +130,42 @@ public class ShareActivity extends BCBActivityBaseClass {
 					}
 				});
 
+		BCBFragmentUtils.addNavigationActions(this);
+		supportInvalidateOptionsMenu();
+
 	}
+
+	@Override
+	public void hideDrawer() {
+		super.hideDrawer();
+		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.closeDrawers();
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle your other action bar items...
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAttachFragment(android.app.Fragment fragment) {
+		super.onAttachFragment(fragment);
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
+		supportInvalidateOptionsMenu();
+	}
+
 }

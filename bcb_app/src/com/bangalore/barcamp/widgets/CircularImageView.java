@@ -130,8 +130,8 @@ public class CircularImageView extends ImageView {
 		// + borderWidth, circleCenter + borderWidth, paintBorder);
 		canvas.drawBitmap(roundBitmap, borderWidth, borderWidth, null);
 		if (isPressed() && mPainter != null) {
-			canvas.drawCircle(circleCenter + borderWidth, circleCenter
-					+ borderWidth, circleCenter + borderWidth, mPainter);
+			canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()), 4,
+					4, mPainter);
 		}
 
 	}

@@ -20,29 +20,37 @@ import java.util.List;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.internal.view.ActionBarPolicy;
+import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.bangalore.barcamp.BCBUtils;
 import com.bangalore.barcamp.MessagesListAdapter;
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.data.BCBUpdatesMessage;
 import com.bangalore.barcamp.database.MessagesDataSource;
+import com.bangalore.barcamp.utils.BCBFragmentUtils;
 
-public class UpdateMessagesActivity extends BCBActivityBaseClass {
+public class UpdateMessagesActivity extends BCBFragmentActionbarActivity {
 
 	public static final String FROM_NOTIFICATION = "fromNotification";
 	public static String EXTRA_POS = "pos";
 	MessageLoadingTask task;
+	private ActionBarDrawerToggle mDrawerToggle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.slot_details_list);
+		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, "BCB");
 
-		BCBUtils.createActionBarOnActivity(this);
-		BCBUtils.addNavigationActions(this);
+		// BCBUtils.addNavigationActions(this);
 		if (getIntent().getBooleanExtra(FROM_NOTIFICATION, false)) {
 		}
+
+		BCBFragmentUtils.addNavigationActions(this);
+		supportInvalidateOptionsMenu();
 
 	}
 
@@ -78,4 +86,38 @@ public class UpdateMessagesActivity extends BCBActivityBaseClass {
 		}
 
 	}
+
+	@Override
+	public void hideDrawer() {
+		super.hideDrawer();
+		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.closeDrawers();
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle your other action bar items...
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAttachFragment(android.app.Fragment fragment) {
+		super.onAttachFragment(fragment);
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
+		supportInvalidateOptionsMenu();
+	}
+
 }

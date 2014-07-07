@@ -3,6 +3,8 @@ package com.bangalore.barcamp.fragment;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
+
 public class BCBFragmentBaseClass extends Fragment {
 	private Intent intent;
 
@@ -15,7 +17,9 @@ public class BCBFragmentBaseClass extends Fragment {
 	}
 
 	public void finish() {
-
+		BCBFragmentActionbarActivity activity = (BCBFragmentActionbarActivity) getActivity();
+		activity.callForFunction(BCBFragmentActionbarActivity.FINISH_FRAGMENT,
+				null);
 	}
 
 	public Intent callForFunction(int id, Intent params) {

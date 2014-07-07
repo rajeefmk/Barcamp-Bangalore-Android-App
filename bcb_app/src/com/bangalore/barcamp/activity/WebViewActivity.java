@@ -22,22 +22,27 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.internal.view.ActionBarPolicy;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.bangalore.barcamp.BCBUtils;
 import com.bangalore.barcamp.R;
-import com.markupartist.android.widget.ActionBar;
-import com.markupartist.android.widget.ActionBar.Action;
+import com.bangalore.barcamp.utils.BCBFragmentUtils;
 
-public class WebViewActivity extends BCBActivityBaseClass {
+public class WebViewActivity extends BCBFragmentActionbarActivity {
 	private static final int SHOW_ERROR_DIALOG = 100;
 	public static final String ENABLE_LOGIN = "enable_login";
 	public static final String URL = "URLToShow";
 	WebView webView;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private int refreshMenuID;
 
 	@Override
 	protected void onNewIntent(Intent intent) {
@@ -49,20 +54,53 @@ public class WebViewActivity extends BCBActivityBaseClass {
 			findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
 			webView.setVisibility(View.GONE);
 			webView.loadUrl(newUrl);
-			if (slidingMenu.isMenuOpen()) {
-				toggle();
-			}
+			hideDrawer();
 		}
 
+	}
+
+	@Override
+	public void hideDrawer() {
+		super.hideDrawer();
+		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.closeDrawers();
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		} else if (item.getItemId() == refreshMenuID) {
+			findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+			webView.setVisibility(View.GONE);
+			webView.reload();
+		}
+		// Handle your other action bar items...
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAttachFragment(android.app.Fragment fragment) {
+		super.onAttachFragment(fragment);
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
+		supportInvalidateOptionsMenu();
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.webview);
-		BCBUtils.createActionBarOnActivity(this);
-		BCBUtils.addNavigationActions(this);
-
+		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, "BCB");
 		webView = (WebView) findViewById(R.id.webView);
 		WebSettings websettings = webView.getSettings();
 		websettings.setJavaScriptEnabled(true);
@@ -85,7 +123,7 @@ public class WebViewActivity extends BCBActivityBaseClass {
 			public void onLoadResource(WebView view, String url) {
 				if (url.contains("bcbapp://android")) {
 					Intent newIntent = new Intent(WebViewActivity.this,
-							ScheduleActivity.class);
+							MainFragmentActivity.class);
 					newIntent.setData(Uri.parse(url));
 					startActivity(newIntent);
 					finish();
@@ -112,24 +150,33 @@ public class WebViewActivity extends BCBActivityBaseClass {
 		String url = getIntent().getStringExtra(URL);
 		webView.loadUrl(url);
 
-		ActionBar actionbar = (ActionBar) findViewById(R.id.actionBar1);
-		actionbar.addAction(new Action() {
-
-			@Override
-			public void performAction(View arg0) {
-				findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
-				webView.setVisibility(View.GONE);
-				webView.reload();
-			}
-
-			@Override
-			public int getDrawable() {
-				return R.drawable.refresh;
-			}
-		}, 0);
+		// ActionBar actionbar = (ActionBar) findViewById(R.id.actionBar1);
+		// actionbar.addAction(new Action() {
+		//
+		// @Override
+		// public void performAction(View arg0) {
+		// findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+		// webView.setVisibility(View.GONE);
+		// webView.reload();
+		// }
+		//
+		// @Override
+		// public int getDrawable() {
+		// return R.drawable.refresh;
+		// }
+		// }, 0);
 
 		webView.requestFocus(View.FOCUS_DOWN);
 
+		BCBFragmentUtils.addNavigationActions(this);
+		supportInvalidateOptionsMenu();
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.refresh, menu);
+		return true;
 	}
 
 	protected Dialog onCreateDialog(int id) {

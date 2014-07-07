@@ -28,10 +28,12 @@ import android.net.Uri;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.bangalore.barcamp.activity.SessionDetailsActivity;
+import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
+import com.bangalore.barcamp.activity.MainFragmentActivity;
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
 import com.bangalore.barcamp.data.Session;
+import com.bangalore.barcamp.fragment.SessionDetailsFragment;
 
 public class SessionAlarmIntentService extends IntentService {
 
@@ -75,14 +77,17 @@ public class SessionAlarmIntentService extends IntentService {
 			CharSequence contentText = "Hello World!"; // message text
 
 			Intent notificationIntent = new Intent(this,
-					SessionDetailsActivity.class);
+					MainFragmentActivity.class);
 			notificationIntent.putExtra(
-					SessionDetailsActivity.EXTRA_SESSION_POSITION,
+					BCBFragmentActionbarActivity.FRAGMENT_TARGET,
+					SessionDetailsFragment.class);
+			notificationIntent.putExtra(
+					SessionDetailsFragment.EXTRA_SESSION_POSITION,
 					intent.getIntExtra(EXTRA_SESSION_POSITION, 0));
-			notificationIntent.putExtra(SessionDetailsActivity.EXTRA_SLOT_POS,
+			notificationIntent.putExtra(SessionDetailsFragment.EXTRA_SLOT_POS,
 					intent.getIntExtra(EXTRA_SLOT_POS, 0));
 			notificationIntent.putExtra(
-					SessionDetailsActivity.EXTRA_SESSION_ID,
+					SessionDetailsFragment.EXTRA_SESSION_ID,
 					intent.getStringExtra(SESSION_ID));
 
 			String sessionID = null;

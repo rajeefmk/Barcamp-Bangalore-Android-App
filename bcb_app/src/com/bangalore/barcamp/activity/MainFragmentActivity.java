@@ -2,6 +2,7 @@ package com.bangalore.barcamp.activity;
 
 import static com.bangalore.barcamp.gcm.CommonUtilities.SENDER_ID;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
 
 import android.app.Dialog;
@@ -18,7 +19,9 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.internal.view.ActionBarPolicy;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -33,6 +36,7 @@ import com.bangalore.barcamp.data.BarcampUserScheduleData;
 import com.bangalore.barcamp.data.Session;
 import com.bangalore.barcamp.data.Slot;
 import com.bangalore.barcamp.database.MessagesDataSource;
+import com.bangalore.barcamp.fragment.BCBFragmentBaseClass;
 import com.bangalore.barcamp.fragment.ScheduleFragment;
 import com.bangalore.barcamp.fragment.SlotDetailsFragment;
 import com.bangalore.barcamp.gcm.GCMUtils;
@@ -44,19 +48,22 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	private CharSequence mDrawerTitle;
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
-	public final static int CALL_REFRESH = 0;
-	public static final int DISMISS_PROGRESS_DIALOG = 1;
-	public static final int CALL_SLOT_DETAILS = 2;
+	private Menu menu;
+	public final static int CALL_REFRESH = 100;
+	public static final int DISMISS_PROGRESS_DIALOG = 101;
+	public static final int CALL_SLOT_DETAILS = 102;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
 		super.onCreate(savedInstanceState);
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
 		setContentView(R.layout.fragment);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.content_frame, new ScheduleFragment()).commit();
 		}
-		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, "Barcamp");
+		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, "BCB");
 
 		if (!GCMUtils.isRegistered(this)) {
 			Intent registrationIntent = new Intent(
@@ -73,6 +80,15 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 		List<BCBUpdatesMessage> list = ds.getAllMessages();
 		ds.close();
 		BCBFragmentUtils.addNavigationActions(this);
+		supportInvalidateOptionsMenu();
+
+	}
+
+	@Override
+	public void hideDrawer() {
+		super.hideDrawer();
+		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.closeDrawers();
 	}
 
 	@Override
@@ -92,6 +108,13 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 		// Handle your other action bar items...
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onAttachFragment(android.app.Fragment fragment) {
+		super.onAttachFragment(fragment);
+		ActionBarPolicy.get(this).showsOverflowMenuButton();
+		// supportInvalidateOptionsMenu();
 	}
 
 	class FetchScheduleAsyncTask extends AsyncTask<Void, Void, Boolean> {
@@ -221,16 +244,6 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 		}
 	}
 
-	/* Called whenever we call invalidateOptionsMenu() */
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		// If the nav drawer is open, hide action items related to the content
-		// view
-		// boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		// menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
-		return super.onPrepareOptionsMenu(menu);
-	}
-
 	public static class MyAlertDialogFragment extends DialogFragment {
 
 		ProgressDialog progressDialog;
@@ -264,13 +277,14 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	@Override
 	public Intent callForFunction(int id, Intent params) {
 		if (id == CALL_REFRESH) {
-			task = new FetchScheduleAsyncTask();
-			task.execute();
+
 			FragmentManager frManager = getSupportFragmentManager();
 			MyAlertDialogFragment fragment = MyAlertDialogFragment
 					.newInstance(0);
 			fragment.setCancelable(false);
 			fragment.show(getSupportFragmentManager(), "dialog");
+			task = new FetchScheduleAsyncTask();
+			task.execute();
 
 			return null;
 		} else if (id == DISMISS_PROGRESS_DIALOG) {
@@ -288,6 +302,33 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 			fragment.setIntent(params);
 			frManager.beginTransaction().replace(R.id.content_frame, fragment)
 					.addToBackStack("slot").commit();
+			// supportInvalidateOptionsMenu();
+		} else if (id == START_FRAGMENT) {
+			try {
+				FragmentManager frManager = getSupportFragmentManager();
+				Class<?> clazz = Class.forName(params.getComponent()
+						.getClassName());
+				Constructor<?> ctor = clazz.getConstructor();
+				BCBFragmentBaseClass fragment = (BCBFragmentBaseClass) ctor
+						.newInstance(new Object[] {});
+				fragment.setIntent(params);
+				frManager.beginTransaction()
+						.replace(R.id.content_frame, fragment)
+						.addToBackStack("session").commit();
+				supportInvalidateOptionsMenu();
+			} catch (Exception e) {
+				Log.e("Error", "Error creating fragment : " + e.getMessage());
+			}
+
+		}
+
+		else if (id == ADD_ACTIONBAR) {
+			// MenuItem menuItem = menu.getItem(0);
+			// menuItem.setIntent(params);
+			// menuItem.setIcon(R.drawable.share_icon);
+			// menuItem.setEnabled(true);
+			// supportInvalidateOptionsMenu();
+
 		}
 		return super.callForFunction(id, params);
 	}
