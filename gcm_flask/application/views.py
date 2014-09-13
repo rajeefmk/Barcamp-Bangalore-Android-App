@@ -22,6 +22,7 @@ from forms import ExampleForm
 
 from flask import request
 from application.models import RegIDModel
+from application.models import MessagesModel
 from google.appengine.ext import db
 import string
 from application.forms import RegIDForm
@@ -42,7 +43,6 @@ def warmup():
 
     """
     return ''
-
 
 def register():
     """Register device for GCM
@@ -126,5 +126,9 @@ def prepMessage():
             outDict['data'] = params
             outString += sendMessage(outDict) +"\n"
             iCount += 100;
+        print "Saving message: " + params['message']
+        saveMessage = MessagesModel(message=params['message'],
+                                    messagetype= params['messageType'])
+        saveMessage.put()
         return outString
     return ''

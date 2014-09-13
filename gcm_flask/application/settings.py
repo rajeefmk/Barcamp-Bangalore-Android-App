@@ -1,4 +1,4 @@
-	"""
+"""
 settings.py
 
 Configuration for Flask app
