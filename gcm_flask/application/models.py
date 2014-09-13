@@ -24,5 +24,5 @@ class MessagesModel(db.Model):
 	"""Model for storing messages sent"""
 	message = db.StringProperty(required=True)
 	messagetype = db.StringProperty(required=True)
-	added_by = db.UserProperty()
+	added_by = db.UserProperty(auto_current_user=True)
 	sent_at = db.DateTimeProperty(auto_now_add=True)
