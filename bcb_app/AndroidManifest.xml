@@ -58,8 +58,6 @@
                     android:scheme="bcbapp" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SlotDetailsActivity" />
-        <activity android:name=".activity.SessionDetailsActivity" />
         <activity
             android:name=".activity.ShareActivity"
             android:launchMode="singleTask" />
@@ -68,19 +66,9 @@
             android:launchMode="singleTask"
             android:theme="@style/CustomActionBarTheme" />
         <activity
-            android:name=".activity.AboutActivity"
-            android:launchMode="singleTask" />
-        <activity
             android:name=".activity.UpdateMessagesActivity"
             android:launchMode="singleTask"
             android:theme="@style/CustomActionBarTheme" />
-        <activity
-            android:name=".activity.LocationActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activity.InternalVenueMapActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".activity.SettingsActivity" />
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask" />

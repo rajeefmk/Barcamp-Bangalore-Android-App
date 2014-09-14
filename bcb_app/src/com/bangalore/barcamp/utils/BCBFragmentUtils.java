@@ -17,12 +17,12 @@ import android.view.View.OnClickListener;
 
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
+import com.bangalore.barcamp.activity.ShareActivity;
 import com.bangalore.barcamp.activity.UpdateMessagesActivity;
 import com.bangalore.barcamp.activity.WebViewActivity;
 import com.bangalore.barcamp.fragment.AboutFragment;
 import com.bangalore.barcamp.fragment.BCBInternalVenueMapFragment;
 import com.bangalore.barcamp.fragment.ScheduleFragment;
-import com.bangalore.barcamp.fragment.ShareFragment;
 
 public class BCBFragmentUtils {
 
@@ -120,25 +120,14 @@ public class BCBFragmentUtils {
 			}
 		});
 
-		view = homeActivity.findViewById(R.id.nav_settings);
-		view.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
-		view.setVisibility(View.GONE);
-
 		view = homeActivity.findViewById(R.id.nav_share);
 		view.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(homeActivity, ShareFragment.class);
-				homeActivity.callForFunction(
-						BCBFragmentActionbarActivity.START_FRAGMENT, intent);
-				homeActivity.hideDrawer();
+				Intent intent = new Intent(homeActivity, ShareActivity.class);
+				homeActivity.startActivity(intent);
+
 			}
 		});
 

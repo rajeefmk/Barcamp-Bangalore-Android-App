@@ -55,6 +55,10 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		if (TextUtils.isEmpty(BCBSharedPrefUtils.getUserID(this))) {
+			startActivity(new Intent(this, LoginActivity.class));
+		}
+
 		ActionBarPolicy.get(this).showsOverflowMenuButton();
 		super.onCreate(savedInstanceState);
 		ActionBarPolicy.get(this).showsOverflowMenuButton();

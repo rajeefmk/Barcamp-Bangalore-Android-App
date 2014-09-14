@@ -5,11 +5,6 @@
     android:background="@drawable/background"
     android:orientation="vertical" >
 
-    <com.markupartist.android.widget.ActionBar
-        android:id="@+id/actionBar1"
-        style="@style/ActionBar" >
-    </com.markupartist.android.widget.ActionBar>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
