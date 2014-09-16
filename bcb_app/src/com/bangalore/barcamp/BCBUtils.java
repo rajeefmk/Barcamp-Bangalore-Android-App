@@ -29,29 +29,18 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
 import com.bangalore.barcamp.data.BarcampUserScheduleData;
 import com.bangalore.barcamp.data.Session;
 import com.bangalore.barcamp.data.Slot;
-import com.markupartist.android.widget.ActionBar;
-import com.markupartist.android.widget.ActionBar.Action;
-import com.slidingmenu.lib.SlidingMenuActivity;
 
 public class BCBUtils {
 
@@ -67,45 +56,47 @@ public class BCBUtils {
 	private static final String BCB_USER_SCHEDULE_URL = "http://barcampbangalore.org/bcb/wp-android_helper.php?action=getuserdata&userid=%s&userkey=%s";
 	protected static final int START_INTERNAL_VENUE = 106;
 
-	public static void createActionBarOnActivity(final Activity activity) {
-		createActionBarOnActivity(activity, false);
-	}
+	//
+	// public static void createActionBarOnActivity(final Activity activity) {
+	// createActionBarOnActivity(activity, false);
+	// }
 
-	public static void createActionBarOnActivity(final Activity activity,
-			boolean isHome) {
-		// ******** Start of Action Bar configuration
-		ActionBar actionbar = (ActionBar) activity
-				.findViewById(R.id.actionBar1);
-		actionbar.setHomeLogo(R.drawable.home);
-		actionbar.setHomeAction(new Action() {
-			@Override
-			public void performAction(View view) {
-				((SlidingMenuActivity) activity).toggle();
-			}
-
-			@Override
-			public int getDrawable() {
-				return R.drawable.home;
-			}
-		});
-
-		actionbar.setTitle(R.string.app_title_text);
-		TextView logo = (TextView) activity.findViewById(R.id.actionbar_title);
-		Shader textShader = new LinearGradient(0, 0, 0, logo.getHeight(),
-				new int[] { Color.WHITE, 0xff999999 }, null, TileMode.CLAMP);
-		logo.getPaint().setShader(textShader);
-		actionbar.setOnTitleClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
-		// ******** End of Action Bar configuration
-
-	}
-
-	// public static Action createShareAction(Activity activity) {
+	//
+	// public static void createActionBarOnActivity(final Activity activity,
+	// boolean isHome) {
+	// // ******** Start of Action Bar configuration
+	// ActionBar actionbar = (ActionBar) activity
+	// .findViewById(R.id.actionBar1);
+	// actionbar.setHomeLogo(R.drawable.home);
+	// actionbar.setHomeAction(new Action() {
+	// @Override
+	// public void performAction(View view) {
+	// ((SlidingMenuActivity) activity).toggle();
+	// }
+	//
+	// @Override
+	// public int getDrawable() {
+	// return R.drawable.home;
+	// }
+	// });
+	//
+	// actionbar.setTitle(R.string.app_title_text);
+	// TextView logo = (TextView) activity.findViewById(R.id.actionbar_title);
+	// Shader textShader = new LinearGradient(0, 0, 0, logo.getHeight(),
+	// new int[] { Color.WHITE, 0xff999999 }, null, TileMode.CLAMP);
+	// logo.getPaint().setShader(textShader);
+	// actionbar.setOnTitleClickListener(new OnClickListener() {
+	//
+	// @Override
+	// public void onClick(View v) {
+	//
+	// }
+	// });
+	// // ******** End of Action Bar configuration
+	//
+	// }
+	//
+	// // public static Action createShareAction(Activity activity) {
 	// IntentAction shareAction = new IntentAction(activity,
 	// createShareIntent(activity), R.drawable.share_icon);
 	//

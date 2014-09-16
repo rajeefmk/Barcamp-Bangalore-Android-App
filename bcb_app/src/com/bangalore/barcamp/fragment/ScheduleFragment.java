@@ -22,7 +22,6 @@ import com.bangalore.barcamp.BCBSharedPrefUtils;
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.SlotsListAdapter;
 import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
-import com.bangalore.barcamp.activity.LoginActivity;
 import com.bangalore.barcamp.activity.MainFragmentActivity;
 import com.bangalore.barcamp.data.BarcampBangalore;
 import com.bangalore.barcamp.data.BarcampData;
@@ -43,9 +42,6 @@ public class ScheduleFragment extends BCBFragmentBaseClass {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		if (TextUtils.isEmpty(BCBSharedPrefUtils.getUserID(getActivity()))) {
-			startActivity(new Intent(getActivity(), LoginActivity.class));
-		}
 
 		View view = inflater.inflate(R.layout.schedule, null);
 

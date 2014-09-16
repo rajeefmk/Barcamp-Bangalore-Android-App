@@ -6,6 +6,7 @@
     <string name="about">About</string>
     <string name="connection_error_and_try_again">Connection Error!! Check if you have internet connectivity and try again.</string>
     <string name="ok">OK</string>
+    <string name="close">Close</string>
     <string name="error_title">Error!!!</string>
     <string name="loading">Loading…</string>
     <string name="choose_app">Choose an App</string>
@@ -42,7 +43,7 @@ Since its inception in Bangalore in 2006, BCB has been a place for awesome peopl
     <string name="i_am_attending">I am attending</string>
     <string name="location_map">Location Map</string>
     <string name="internal_venue">Venue Map</string>
-    <string name="for_barcamp_bangalore">Orignally made for :</string>
+    <string name="for_barcamp_bangalore">Originally made for :</string>
     <string name="login">Login</string>
     <string name="do_not_login"><u>I am just trying things out</u></string>
 

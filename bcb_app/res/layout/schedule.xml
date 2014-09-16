@@ -3,14 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
+    android:background="@color/list_background"
     android:orientation="vertical" >
-
-    <com.markupartist.android.widget.ActionBar
-        android:id="@+id/actionBar1"
-        style="@style/ActionBar" 
-        android:visibility="gone">
-    </com.markupartist.android.widget.ActionBar>
 
     <TextView
         android:id="@+id/infoText"
