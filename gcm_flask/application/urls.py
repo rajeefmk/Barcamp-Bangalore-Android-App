@@ -28,6 +28,8 @@ app.add_url_rule('/prepMessage', 'prepMessage', view_func=views.prepMessage,meth
 # admin-only Send Message
 app.add_url_rule('/sendMessage', 'sendMessage', view_func=views.sendMessage, methods=['POST'])
 
+app.add_url_rule('/getMessages', 'getMessages', view_func=views.getMessages, methods=['POST'])
+
 
 ## Error handlers
 # Handle 404 errors

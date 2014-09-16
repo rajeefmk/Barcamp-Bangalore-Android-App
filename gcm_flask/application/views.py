@@ -132,3 +132,18 @@ def prepMessage():
         saveMessage.put()
         return outString
     return ''
+
+def getMessages():
+    """Fetches the sent push messages from GAE datastore
+    """
+    if request.method == 'POST':
+        messagesDict = dict()
+        keydict = MultiDict()
+        m = MessagesModel.all()
+        messages = m.run()
+        for message in messages:
+            messagesDict['message'] = message.message
+            messagesDict['messagetype'] = message.messagetype
+            messagesDict['sent_at'] = str(message.sent_at)
+            keydict[str(message.key())] = messagesDict
+        return json.dumps(keydict, sort_keys=True, indent=4)
