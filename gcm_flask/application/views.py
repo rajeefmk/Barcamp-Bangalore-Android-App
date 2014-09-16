@@ -13,27 +13,27 @@ For example the *say_hello* handler, handling the URL route '/hello/<username>',
 from google.appengine.api import users
 from google.appengine.api import taskqueue
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
+from google.appengine.ext import db
 
 from flask import render_template, flash, url_for, redirect
-
-from models import ExampleModel
-from decorators import login_required, admin_required
-from forms import ExampleForm
-
 from flask import request
+from flask.wrappers import Response
+from flask.helpers import send_file
+
+from decorators import login_required, admin_required
+
 from application.models import RegIDModel
 from application.models import MessagesModel
-from google.appengine.ext import db
-import string
 from application.forms import RegIDForm
 
-import json
 from werkzeug.datastructures import MultiDict
-import urllib2
-from flask.wrappers import Response
 from werkzeug_debugger_appengine import get_template
-from flask.helpers import send_file
+
+import string
+import json
+import urllib2
 import logging
+from datetime import datetime
 
 YOUR_API_KEY = "Your Api key"
 
@@ -88,12 +88,12 @@ def sendMessage(dictObj):
         headers['Content-Type'] = 'application/json'
         headers['Content-Length'] = clen
         headers['Authorization'] = "key=" + YOUR_API_KEY
-        
+
         req = urllib2.Request("https://android.googleapis.com/gcm/send", data, headers)
         f = urllib2.urlopen(req)
         responseMsg = f.read()
         f.close()
-        return responseMsg;
+        return responseMsg
         return json.dumps(dictObj, sort_keys=True, indent=4)
 
 @admin_required
@@ -104,31 +104,32 @@ def prepMessage():
     if request.method == "GET":
         return render_template("prepmessage.html")
     elif request.method == "POST":
-        outDict = MultiDict();
-        params = dict();
+        outDict = MultiDict()
+        params = dict()
         params['messageType'] = request.form['messageType']
         params['message'] = request.form['message']
         outString = ""
-        
+
         q = RegIDModel.all()
         count = q.count(1000000)
         iCount = 0
         while iCount < count:
-            items = q.fetch(100, iCount);            
+            items = q.fetch(100, iCount)
             strings = ""
             start = ""
             stringarray = []
             for item in items:
                 strings = strings + start + item.regID
-                start = "," 
+                start = ","
                 stringarray.append(item.regID)
             outDict['registration_ids'] = stringarray
             outDict['data'] = params
-            outString += sendMessage(outDict) +"\n"
-            iCount += 100;
+            outString += sendMessage(outDict) + "\n"
+            iCount += 100
         print "Saving message: " + params['message']
         saveMessage = MessagesModel(message=params['message'],
-                                    messagetype= params['messageType'])
+                                    messagetype= params['messageType'],
+                                    sent_at=datetime.now())
         saveMessage.put()
         return outString
     return ''
