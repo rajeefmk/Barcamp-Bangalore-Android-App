@@ -75,9 +75,8 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 			holder.text1.setText(text + "@ " + session.location);
 			// holder.text1
 			// .setBackgroundResource(R.drawable.session_list_item_title_background_drawable);
-			// holder.text1.setBackgroundDrawable(new
-			// MyDrawable(session.color));
-			holder.text1.setBackgroundColor(Color.parseColor(session.color));
+			holder.text1.setBackground(new MyDrawable(session.color));
+			// holder.text1.setBackgroundColor(Color.parseColor(session.color));
 			holder.text1.invalidate();
 			// holder.text1.getBackground().setColorFilter(
 			// Color.parseColor(session.color), PorterDuff.Mode.SCREEN);
@@ -129,13 +128,11 @@ public class SlotItemsListAdapter extends ArrayAdapter<Session> {
 
 		@Override
 		public void draw(Canvas canvas) {
-
+			float density = getContext().getResources().getDisplayMetrics().density;
 			Rect rect = getBounds();
 			RectF rectF = new RectF(rect);
-			canvas.drawRoundRect(rectF, 3, 3, mPainter);
-			rectF.right = rectF.right - 10;
-			canvas.drawRect(rectF, mPainter);
-			rect.top = rect.top + 10;
+			canvas.drawRoundRect(rectF, 5 * density, 5 * density, mPainter);
+			rect.bottom = (int) (rect.bottom - (5 * density));
 			canvas.drawRect(rect, mPainter);
 
 		}

@@ -54,6 +54,18 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	public static final int CALL_SLOT_DETAILS = 102;
 
 	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		if (intent.getData() != null) {
+			String id = intent.getData().getQueryParameter("id");
+			String sid = intent.getData().getQueryParameter("sid");
+			Log.e("data", "id: " + id + " sid: " + sid);
+			BCBSharedPrefUtils.setUserData(getApplicationContext(), id, sid);
+			BCBSharedPrefUtils.setScheduleUpdated(this, true);
+		}
+	}
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		if (TextUtils.isEmpty(BCBSharedPrefUtils.getUserID(this))) {
 			startActivity(new Intent(this, LoginActivity.class));
@@ -263,8 +275,9 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			progressDialog = new ProgressDialog(getActivity());
-			progressDialog.setCancelable(false);
+			// progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
+			progressDialog.setTitle("Wrenching data out of BCB Servers");
 			return progressDialog;
 
 		}
@@ -285,7 +298,7 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 			FragmentManager frManager = getSupportFragmentManager();
 			MyAlertDialogFragment fragment = MyAlertDialogFragment
 					.newInstance(0);
-			fragment.setCancelable(false);
+			// fragment.setCancelable(false);
 			fragment.show(getSupportFragmentManager(), "dialog");
 			task = new FetchScheduleAsyncTask();
 			task.execute();

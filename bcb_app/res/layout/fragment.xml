@@ -17,7 +17,7 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/navgiation_background"
+        android:background="#232017"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" >
@@ -59,13 +59,12 @@
                             android:id="@+id/imageView1"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/agenda" />
 
                         <TextView
                             android:id="@+id/textView1"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/agenda" />
                     </LinearLayout>
                 </LinearLayout>
@@ -89,13 +88,12 @@
                             android:id="@+id/imageView2"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
-                            android:src="@drawable/tweet" />
+                            android:src="@drawable/twitter" />
 
                         <TextView
                             android:id="@+id/textView2"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/tweets" />
                     </LinearLayout>
                 </LinearLayout>
@@ -119,13 +117,12 @@
                             android:id="@+id/imageView3"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/updates" />
 
                         <TextView
                             android:id="@+id/textView3"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:shadowColor="@android:color/black"
                             android:text="@string/updates" />
                     </LinearLayout>
@@ -150,13 +147,12 @@
                             android:id="@+id/imageView4"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/venue" />
 
                         <TextView
                             android:id="@+id/textView4"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/venue" />
                     </LinearLayout>
                 </LinearLayout>
@@ -180,13 +176,12 @@
                             android:id="@+id/imageView7"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/internal_venue_left" />
 
                         <TextView
                             android:id="@+id/textView7"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/internal_venue" />
                     </LinearLayout>
                 </LinearLayout>
@@ -210,13 +205,12 @@
                             android:id="@+id/imageView5"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/about" />
 
                         <TextView
                             android:id="@+id/textView5"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/about" />
                     </LinearLayout>
                 </LinearLayout>
@@ -240,13 +234,12 @@
                             android:id="@+id/imageView6"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/navigation_icon_background"
                             android:src="@drawable/share" />
 
                         <TextView
                             android:id="@+id/textView6"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/share" />
                     </LinearLayout>
                 </LinearLayout>

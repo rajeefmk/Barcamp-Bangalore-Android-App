@@ -2,12 +2,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_pressed="true"><shape android:shape="rectangle">
-            <solid android:color="@color/session_slot_title_background_pressed_color"></solid>
+            <corners android:topLeftRadius="10dp" />
 
-            <corners android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" android:radius="10dp" />
+            <solid android:color="#3f392b"></solid>
         </shape></item>
     <item><shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" />
+            <corners android:topLeftRadius="10dp" />
+
+            <solid android:color="#3f392b"></solid>
         </shape></item>
 
 </selector>

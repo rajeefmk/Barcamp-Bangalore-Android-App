@@ -22,7 +22,8 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/login_button_background"
         android:maxWidth="300dp"
-        android:text="Login to Sync with Website" />
+        android:text="Login to Sync with Website"
+        android:textColor="#fff" />
 
     <TextView
         android:id="@+id/skipLoginButton"
@@ -34,6 +35,6 @@
         android:gravity="center"
         android:padding="30dp"
         android:text="@string/do_not_login"
-        android:textColor="#fff" />
+        android:textColor="#3f392b" />
 
 </LinearLayout>

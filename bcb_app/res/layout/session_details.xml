@@ -3,7 +3,6 @@
     xmlns:custom="http://schemas.android.com/apk/res/com.bangalore.barcamp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <ScrollView
@@ -20,10 +19,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dip"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.38"
-                android:background="@drawable/session_title_header"
-                android:orientation="vertical" >
+                android:background="@drawable/session_title_header" >
 
                 <TextView
                     android:id="@+id/title"
@@ -53,9 +51,11 @@
 
                 <TextView
                     android:id="@+id/presenter"
-                    android:layout_width="200dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/title"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="50dp"
                     android:layout_toRightOf="@+id/authorImage"
                     android:background="@drawable/session_author_background"
                     android:paddingLeft="10dp"
@@ -95,13 +95,16 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/session_detail_when_background_drawable"
+                        android:gravity="right"
                         android:paddingBottom="10dp"
                         android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:paddingTop="10dp"
                         android:text="@string/when"
-                        android:textColor="#777777"
+                        android:textColor="#FFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -111,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:textColor="#777777"
+                        android:textColor="#3f392b"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -122,28 +125,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1dp"
                     android:background="@drawable/session_location_body_background"
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/session_detail_where_background_drawable"
+                        android:gravity="right"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:paddingTop="10dp"
                         android:text="@string/where"
-                        android:textColor="#777777"
+                        android:textColor="#FFF"
                         android:textSize="16sp"
-                        android:textStyle="bold" 
-                        android:layout_weight="0"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/location"
-                        android:layout_width="170dp"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" android:paddingLeft="5dp"
-                        android:textColor="#777777"
+                        android:layout_weight="1"
+                        android:background="#b5ae80"
+                        android:paddingLeft="5dp"
+                        android:textColor="#3f392b"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -166,12 +172,13 @@
 
                 <CheckBox
                     android:id="@+id/checkBox1"
+                    style="@android:style/Widget.CompoundButton.CheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:gravity="left|bottom"
-                    android:paddingBottom="15dp"
+                    android:gravity="left|center"
+                    android:paddingBottom="10dp"
                     android:paddingTop="10dp"
                     android:text="@string/i_am_attending"
                     android:textColor="#000000" />

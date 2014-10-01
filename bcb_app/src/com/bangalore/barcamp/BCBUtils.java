@@ -45,7 +45,7 @@ import com.bangalore.barcamp.data.Slot;
 public class BCBUtils {
 
 	private static final int MAX_LOG = 2000;
-	private static final String BARCAMP_SCHEDULE_JSON = "http://barcampbangalore.org/schadmin/android.json";
+	private static final String BARCAMP_SCHEDULE_JSON = "https://barcampbangalore.org/schadmin/android.json";
 	private static final String BCB_LOCATION_MAPS_URL = "https://www.google.co.in/maps?t=m&cid=0x9ed33f443055ef5f&z=17&iwloc=A";
 	protected static final int START_SCHEDULE = 100;
 	protected static final int START_ABOUT = 101;
@@ -53,7 +53,7 @@ public class BCBUtils {
 	protected static final int START_SHARE = 103;
 	protected static final int START_BCB12_TWEETS = 104;
 	protected static final int START_BCB_UPDATES = 105;
-	private static final String BCB_USER_SCHEDULE_URL = "http://barcampbangalore.org/bcb/wp-android_helper.php?action=getuserdata&userid=%s&userkey=%s";
+	private static final String BCB_USER_SCHEDULE_URL = "https://barcampbangalore.org/bcb/wp-android_helper.php?action=getuserdata&userid=%s&userkey=%s";
 	protected static final int START_INTERNAL_VENUE = 106;
 
 	//
@@ -390,8 +390,8 @@ public class BCBUtils {
 		int hour = slot.startTime / 100;
 		int mins = slot.startTime % 100;
 		Log.e("Session", "hour : " + hour + " mins :" + mins);
-		GregorianCalendar date = new GregorianCalendar(2013,
-				Calendar.SEPTEMBER, 14, hour, mins);
+		GregorianCalendar date = new GregorianCalendar(2014, Calendar.OCTOBER,
+				11, hour, mins);
 		long timeInMills = date.getTimeInMillis() - 300000;
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMills, intent);
 	}

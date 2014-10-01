@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
-    android:background="@drawable/navgiation_background" android:paddingLeft="-10dp">
+    android:background="@drawable/navgiation_background"
+    android:paddingLeft="-10dp" >
 
     <ImageView
         android:id="@+id/imageViewShadow"
@@ -33,21 +34,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp" >
+                    android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView1"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/agenda" />
 
                     <TextView
                         android:id="@+id/textView1"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/agenda" />
                 </LinearLayout>
             </LinearLayout>
@@ -63,21 +63,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
-                        android:src="@drawable/tweet" />
+                        android:src="@drawable/twitter" />
 
                     <TextView
                         android:id="@+id/textView2"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/tweets" />
                 </LinearLayout>
             </LinearLayout>
@@ -93,21 +92,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView3"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/updates" />
 
                     <TextView
                         android:id="@+id/textView3"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:shadowColor="@android:color/black"
                         android:text="@string/updates" />
                 </LinearLayout>
@@ -124,24 +122,22 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView4"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/venue" />
 
                     <TextView
                         android:id="@+id/textView4"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/venue" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -155,26 +151,24 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView7"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/internal_venue_left" />
 
                     <TextView
                         android:id="@+id/textView7"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/internal_venue" />
                 </LinearLayout>
-
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/nav_about"
                 android:layout_width="fill_parent"
@@ -186,24 +180,22 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView5"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/about" />
 
                     <TextView
                         android:id="@+id/textView5"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/about" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -217,26 +209,24 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView6"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/share" />
 
                     <TextView
                         android:id="@+id/textView6"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/share" />
                 </LinearLayout>
-
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/nav_settings"
                 android:layout_width="fill_parent"
@@ -248,21 +238,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
+                    android:paddingBottom="5dp"
                     android:paddingLeft="0dp"
-                    android:paddingBottom="5dp" 
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView7"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/navigation_icon_background"
                         android:src="@drawable/settings" />
 
                     <TextView
                         android:id="@+id/textView7"
                         style="@style/NavigationTextStyle"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="@string/settings" />
                 </LinearLayout>
             </LinearLayout>

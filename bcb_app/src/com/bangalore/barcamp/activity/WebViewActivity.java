@@ -20,6 +20,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -33,6 +34,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.bangalore.barcamp.BCBSharedPrefUtils;
 import com.bangalore.barcamp.R;
 import com.bangalore.barcamp.utils.BCBFragmentUtils;
 
@@ -106,6 +108,28 @@ public class WebViewActivity extends BCBFragmentActionbarActivity {
 		websettings.setJavaScriptEnabled(true);
 		webView.setClickable(true);
 		webView.setWebViewClient(new WebViewClient() {
+			@Override
+			public void onPageStarted(WebView view, String url, Bitmap favicon) {
+				if (url.contains("bcbapp://android")) {
+					setUserDetails(url);
+				}
+				super.onPageStarted(view, url, favicon);
+			}
+
+			private void setUserDetails(String url) {
+				Intent newIntent = new Intent(WebViewActivity.this,
+						MainFragmentActivity.class);
+				newIntent.setData(Uri.parse(url));
+				startActivity(newIntent);
+				String id = newIntent.getData().getQueryParameter("id");
+				String sid = newIntent.getData().getQueryParameter("sid");
+				Log.e("data", "id: " + id + " sid: " + sid);
+				BCBSharedPrefUtils
+						.setUserData(getApplicationContext(), id, sid);
+				BCBSharedPrefUtils.setScheduleUpdated(WebViewActivity.this,
+						true);
+				finish();
+			}
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
@@ -122,11 +146,7 @@ public class WebViewActivity extends BCBFragmentActionbarActivity {
 			@Override
 			public void onLoadResource(WebView view, String url) {
 				if (url.contains("bcbapp://android")) {
-					Intent newIntent = new Intent(WebViewActivity.this,
-							MainFragmentActivity.class);
-					newIntent.setData(Uri.parse(url));
-					startActivity(newIntent);
-					finish();
+					setUserDetails(url);
 				}
 				super.onLoadResource(view, url);
 			}

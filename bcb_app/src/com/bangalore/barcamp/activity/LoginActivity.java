@@ -28,7 +28,7 @@ public class LoginActivity extends Activity {
 						intent.putExtra(WebViewActivity.ENABLE_LOGIN, true);
 						intent.putExtra(
 								WebViewActivity.URL,
-								"http://barcampbangalore.org/bcb/wp-login.php?redirect_to=http%3A%2F%2Fbarcampbangalore.org%2Fbcb%2Fwp-android_helper.php%3Faction%3Dauth");
+								"https://barcampbangalore.org/bcb/wp-login.php?redirect_to=https%3A%2F%2Fbarcampbangalore.org%2Fbcb%2Fwp-android_helper.php%3Faction%3Dauth");
 						// Intent intent = new Intent(
 						// Intent.ACTION_VIEW,
 						// Uri.parse("http://barcampbangalore.org/bcb/wp-login.php?redirect_to=http%3A%2F%2Fbarcampbangalore.org%2Fbcb%2Fwp-android_helper.php%3Faction%3Dauth"));

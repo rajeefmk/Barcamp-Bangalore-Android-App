@@ -1,69 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:custom="http://schemas.android.com/apk/res/com.bangalore.barcamp"
-     android:layout_width="fill_parent"
-	 android:layout_height="wrap_content"
-	 android:baselineAligned="false"
-	 android:orientation="horizontal"
-	 android:layout_marginBottom="10dp"
-	 android:layout_marginTop="10dp" 
-	 android:padding="10dp"
-	 android:gravity="center_vertical">
+    xmlns:custom="http://schemas.android.com/apk/res/com.bangalore.barcamp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp" >
 
-        <TextView
-            android:id="@android:id/text2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@android:id/text1"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/session_list_item_body_background_drawable"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Text2"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:typeface="sans" />
-        
-      <!--   <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@android:id/text1"
-            android:background="#00000000"
-            android:src="@drawable/right_arrow" />
- -->
+    <TextView
+        android:id="@android:id/text2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/session_list_item_body_background_drawable"
+        android:gravity="left|center_vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="4dp"
+        android:text="Text2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
-         <com.bangalore.barcamp.widgets.CircularImageView
-             android:id="@+id/imageView1"
-             android:layout_width="50dp"
-             android:layout_height="50dp"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentTop="true"
-             android:src="@drawable/bcb_logo_opaque"
-             custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
+    <TextView
+        android:id="@android:id/text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@android:id/text2"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/session_list_item_title_background_drawable"
+        android:gravity="left|center_vertical"
+        android:paddingBottom="7dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="7dp"
+        android:text="Text1"
+        android:textColor="@color/slot_item_title_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
-         <TextView
-             android:id="@android:id/text1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignTop="@id/imageView1"
-             android:layout_marginTop="15dp"
-             android:layout_toRightOf="@+id/imageView1"
-             android:background="@drawable/session_list_item_title_background_drawable"
-             android:gravity="left|center_vertical"
-             android:paddingBottom="2dp"
-             android:paddingLeft="5dp"
-             android:paddingRight="5dp"
-             android:paddingTop="2dp"
-             android:text="Text1"
-             android:textColor="@color/slot_item_title_color"
-             android:textSize="12sp"
-             android:textStyle="bold" />
-         
-    </RelativeLayout>
+    <com.bangalore.barcamp.widgets.CircularImageView
+        android:id="@+id/imageView1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@android:id/text1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="7dp"
+        android:src="@drawable/bcb_logo_opaque"
+        custom:url="http://1.gravatar.com/avatar/8e6841f6e443c2a0ece22809a7fafb1e" />
+
+</RelativeLayout>

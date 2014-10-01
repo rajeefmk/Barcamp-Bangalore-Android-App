@@ -67,7 +67,7 @@
                         <TextView
                             android:id="@+id/textView1"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/agenda" />
                     </LinearLayout>
                 </LinearLayout>
@@ -92,12 +92,12 @@
                             android:layout_width="50dp"
                             android:layout_height="40dp"
                             android:background="@drawable/navigation_icon_background"
-                            android:src="@drawable/tweet" />
+                            android:src="@drawable/twitter" />
 
                         <TextView
                             android:id="@+id/textView2"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/tweets" />
                     </LinearLayout>
                 </LinearLayout>
@@ -127,7 +127,7 @@
                         <TextView
                             android:id="@+id/textView3"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:shadowColor="@android:color/black"
                             android:text="@string/updates" />
                     </LinearLayout>
@@ -158,7 +158,7 @@
                         <TextView
                             android:id="@+id/textView4"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/venue" />
                     </LinearLayout>
                 </LinearLayout>
@@ -188,7 +188,7 @@
                         <TextView
                             android:id="@+id/textView7"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/internal_venue" />
                     </LinearLayout>
                 </LinearLayout>
@@ -218,7 +218,7 @@
                         <TextView
                             android:id="@+id/textView5"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/about" />
                     </LinearLayout>
                 </LinearLayout>
@@ -248,7 +248,7 @@
                         <TextView
                             android:id="@+id/textView6"
                             style="@style/NavigationTextStyle"
-                            android:paddingLeft="10dp"
+                            android:paddingLeft="5dp"
                             android:text="@string/share" />
                     </LinearLayout>
                 </LinearLayout>

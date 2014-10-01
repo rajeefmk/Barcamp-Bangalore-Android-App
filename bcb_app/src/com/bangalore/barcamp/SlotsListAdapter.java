@@ -88,6 +88,8 @@ public class SlotsListAdapter extends ArrayAdapter<Slot> {
 			li.setBackgroundResource(R.drawable.slot_desc_fixed_background_drawable);
 			((TextView) convertView.findViewById(R.id.slot_title))
 					.setTextColor(Color.WHITE);
+			((TextView) convertView.findViewById(R.id.slot_time))
+					.setTextColor(Color.WHITE);
 		}
 		if (holder.desc != null) {
 			holder.desc.setVisibility(View.GONE);
