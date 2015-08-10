@@ -19,7 +19,7 @@ from flask import render_template, flash, url_for, redirect
 from flask import request
 from flask.wrappers import Response
 from flask.helpers import send_file
-
+import time
 from decorators import login_required, admin_required
 
 from application.models import RegIDModel
@@ -35,7 +35,7 @@ import urllib2
 import logging
 from datetime import datetime
 
-YOUR_API_KEY = "Your Api key"
+YOUR_API_KEY = "AIzaSyDIALcTp37BUl4taKtN8_RotXumIk577Q0"
 
 def warmup():
     """App Engine warmup handler
@@ -108,6 +108,7 @@ def prepMessage():
         params = dict()
         params['messageType'] = request.form['messageType']
         params['message'] = request.form['message']
+        params['time'] = int(time.time())
         outString = ""
 
         q = RegIDModel.all()
@@ -129,7 +130,7 @@ def prepMessage():
         print "Saving message: " + params['message']
         saveMessage = MessagesModel(message=params['message'],
                                     messagetype= params['messageType'],
-                                    sent_at=datetime.now())
+                                    sent_at=params['time'])
         saveMessage.put()
         return outString
     return ''
@@ -139,12 +140,13 @@ def getMessages():
     """
     if request.method == 'POST':
         messagesDict = dict()
-        keydict = MultiDict()
+        keydict = list()
         m = MessagesModel.all()
         messages = m.run()
         for message in messages:
             messagesDict['message'] = message.message
             messagesDict['messagetype'] = message.messagetype
             messagesDict['sent_at'] = str(message.sent_at)
-            keydict[str(message.key())] = messagesDict
+            messagesDict['id'] = str(message.key())
+            keydict.append(messagesDict)
         return json.dumps(keydict, sort_keys=True, indent=4)
