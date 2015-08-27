@@ -3,13 +3,8 @@ package com.bangalore.barcamp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
-
+import java.net.HttpURLConnection;
+import java.net.URL;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
@@ -35,17 +30,29 @@ public class SessionAttendingUpdateService extends IntentService {
 		String isAttending = intent.getStringExtra(IS_ATTENDING);
 
 		BufferedReader in = null;
-		String url = String.format(BASE_URL, userID, userKey, sessionID,
+		String urlString = String.format(BASE_URL, userID, userKey, sessionID,
 				isAttending);
 		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
 			try {
-				HttpClient client = new DefaultHttpClient();
-				HttpUriRequest request = new HttpGet(url);
-				HttpResponse response = client.execute(request);
-				in = new BufferedReader(new InputStreamReader(response
-						.getEntity().getContent()));
+				URL url = new URL(urlString);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setReadTimeout(10000 /* milliseconds */);
+				conn.setConnectTimeout(15000 /* milliseconds */);
+				conn.setRequestMethod("GET");
+				conn.setDoInput(true);
+				// Starts the query
+				conn.connect();
+				int response = conn.getResponseCode();
+//						Log.d(DEBUG_TAG, "The response is: " + response);
+				in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+//				HttpClient client = new DefaultHttpClient();
+//				HttpUriRequest request = new HttpGet(url);
+//				HttpResponse response = client.execute(request);
+//				in = new BufferedReader(new InputStreamReader(response
+//						.getEntity().getContent()));
 				StringBuffer sb = new StringBuffer("");
 				String line = "";
 				String NL = System.getProperty("line.separator");

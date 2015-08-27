@@ -19,15 +19,11 @@ package com.bangalore.barcamp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -126,11 +122,23 @@ public class BCBUtils {
 		Boolean retVal = false;
 		BufferedReader in = null;
 		try {
-			HttpClient client = new DefaultHttpClient();
-			HttpUriRequest request = new HttpGet(BARCAMP_SCHEDULE_JSON);
-			HttpResponse response = client.execute(request);
-			in = new BufferedReader(new InputStreamReader(response.getEntity()
-					.getContent()));
+			URL url = new URL(BARCAMP_SCHEDULE_JSON);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setReadTimeout(10000 /* milliseconds */);
+			conn.setConnectTimeout(15000 /* milliseconds */);
+			conn.setRequestMethod("GET");
+			conn.setDoInput(true);
+			// Starts the query
+			conn.connect();
+			int response = conn.getResponseCode();
+//						Log.d(DEBUG_TAG, "The response is: " + response);
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+//			HttpClient client = new DefaultHttpClient();
+//			HttpUriRequest request = new HttpGet(BARCAMP_SCHEDULE_JSON);
+//			HttpResponse response = client.execute(request);
+//			in = new BufferedReader(new InputStreamReader(response.getEntity()
+//					.getContent()));
 			StringBuffer sb = new StringBuffer("");
 			String line = "";
 			String NL = System.getProperty("line.separator");
@@ -327,14 +335,30 @@ public class BCBUtils {
 
 		BufferedReader in = null;
 		try {
-			HttpClient client = new DefaultHttpClient();
 			String userScheduleURL = String.format(BCB_USER_SCHEDULE_URL,
 					userID, userKey);
+			URL url = new URL(userScheduleURL);
 			Log.e("UserURL", userScheduleURL);
-			HttpUriRequest request = new HttpGet(userScheduleURL);
-			HttpResponse response = client.execute(request);
-			in = new BufferedReader(new InputStreamReader(response.getEntity()
-					.getContent()));
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setReadTimeout(10000 /* milliseconds */);
+			conn.setConnectTimeout(15000 /* milliseconds */);
+			conn.setRequestMethod("GET");
+			conn.setDoInput(true);
+			// Starts the query
+			conn.connect();
+			int response = conn.getResponseCode();
+//						Log.d(DEBUG_TAG, "The response is: " + response);
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+
+//			HttpClient client = new DefaultHttpClient();
+//			String userScheduleURL = String.format(BCB_USER_SCHEDULE_URL,
+//					userID, userKey);
+//			Log.e("UserURL", userScheduleURL);
+//			HttpUriRequest request = new HttpGet(userScheduleURL);
+//			HttpResponse response = client.execute(request);
+//			in = new BufferedReader(new InputStreamReader(response.getEntity()
+//					.getContent()));
 			StringBuffer sb = new StringBuffer("");
 			String line = "";
 			String NL = System.getProperty("line.separator");
