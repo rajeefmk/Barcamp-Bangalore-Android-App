@@ -21,10 +21,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.PowerManager;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.bangalore.barcamp.BCBSharedPrefUtils;
@@ -105,15 +107,30 @@ public class GCMIntentService extends IntentService {
 					notificationIntent, 0);
 			// the next two lines initialize the Notification, using the
 			// configurations above
-			Notification notification = new Notification(icon, tickerText, when);
-			notification.flags |= Notification.FLAG_AUTO_CANCEL
-					| Notification.DEFAULT_SOUND
-					| Notification.FLAG_SHOW_LIGHTS;
-			notification.setLatestEventInfo(this, contentTitle, contentText,
-					contentIntent);
-			String ns = Context.NOTIFICATION_SERVICE;
-			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
-			mNotificationManager.notify(100, notification);
+//			Notification notification = new Notification(icon, tickerText, when);
+//			notification.flags |= Notification.FLAG_AUTO_CANCEL
+//					| Notification.DEFAULT_SOUND
+//					| Notification.FLAG_SHOW_LIGHTS;
+//			notification.setLatestEventInfo(this, contentTitle, contentText,
+//					contentIntent);
+//			String ns = Context.NOTIFICATION_SERVICE;
+//			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+//			mNotificationManager.notify(100, notification);
+            NotificationCompat.Builder mBuilder =
+                    (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                            .setSmallIcon(icon)
+                            .setTicker(tickerText)
+                            .setContentText(contentText)
+                            .setContentTitle(contentTitle)
+                            .setContentIntent(contentIntent)
+                            .setShowWhen(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                    .setAutoCancel(true)
+                    .setLights(Color.BLUE, 1000, 500);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            // mId allows you to update the notification later on.
+            mNotificationManager.notify(100, mBuilder.build());
 
 		} else {
 			MessagesDataSource ds = new MessagesDataSource(
@@ -136,15 +153,30 @@ public class GCMIntentService extends IntentService {
 					notificationIntent, 0);
 			// the next two lines initialize the Notification, using the
 			// configurations above
-			Notification notification = new Notification(icon, tickerText, when);
-			notification.flags |= Notification.FLAG_AUTO_CANCEL
-					| Notification.DEFAULT_SOUND
-					| Notification.FLAG_SHOW_LIGHTS;
-			notification.setLatestEventInfo(this, contentTitle, contentText,
-					contentIntent);
-			String ns = Context.NOTIFICATION_SERVICE;
-			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
-			mNotificationManager.notify(90, notification);
+//			Notification notification = new Notification(icon, tickerText, when);
+//			notification.flags |= Notification.FLAG_AUTO_CANCEL
+//					| Notification.DEFAULT_SOUND
+//					| Notification.FLAG_SHOW_LIGHTS;
+//			notification.setLatestEventInfo(this, contentTitle, contentText,
+//					contentIntent);
+//			String ns = Context.NOTIFICATION_SERVICE;
+//			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+//			mNotificationManager.notify(90, notification);
+            NotificationCompat.Builder mBuilder =
+                    (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                            .setSmallIcon(icon)
+                            .setTicker(tickerText)
+                            .setContentText(contentText)
+                            .setContentTitle(contentTitle)
+                            .setContentIntent(contentIntent)
+                            .setShowWhen(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                            .setAutoCancel(true)
+                            .setLights(Color.BLUE,1000,500);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            // mId allows you to update the notification later on.
+            mNotificationManager.notify(90, mBuilder.build());
 
 		}
 		try {

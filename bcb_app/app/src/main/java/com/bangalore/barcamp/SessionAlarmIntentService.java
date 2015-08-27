@@ -26,6 +26,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.PowerManager;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.bangalore.barcamp.activity.BCBFragmentActionbarActivity;
@@ -116,17 +117,29 @@ public class SessionAlarmIntentService extends IntentService {
 
 			// the next two lines initialize the Notification, using the
 			// configurations above
-			Notification notification = new Notification(icon, tickerText, when);
-			notification.flags |= Notification.FLAG_AUTO_CANCEL
-					| Notification.DEFAULT_SOUND
-					| Notification.FLAG_SHOW_LIGHTS;
-			notification.setLatestEventInfo(context, contentTitle, contentText,
-					contentIntent);
-
-			String ns = Context.NOTIFICATION_SERVICE;
-			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
-			mNotificationManager.notify(Integer.parseInt(sessionID),
-					notification);
+//			Notification notification = new Notification(icon, tickerText, when);
+//			notification.flags |= Notification.FLAG_AUTO_CANCEL
+//					| Notification.DEFAULT_SOUND
+//					| Notification.FLAG_SHOW_LIGHTS;
+//			notification.setLatestEventInfo(context, contentTitle, contentText,
+//					contentIntent);
+//
+//			String ns = Context.NOTIFICATION_SERVICE;
+//			NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+//			mNotificationManager.notify(Integer.parseInt(sessionID),
+//					notification);
+			NotificationCompat.Builder mBuilder =
+                    (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                                    .setSmallIcon(icon)
+                                    .setTicker(tickerText)
+                                    .setDefaults(Notification.DEFAULT_ALL)
+                                    .setContentText(contentText)
+                                    .setContentTitle(contentTitle)
+                                    .setContentIntent(contentIntent);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            // mId allows you to update the notification later on.
+            mNotificationManager.notify(Integer.parseInt(sessionID), mBuilder.build());
 			try {
 				Uri notificationurl = RingtoneManager
 						.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -135,6 +148,7 @@ public class SessionAlarmIntentService extends IntentService {
 				r.play();
 			} catch (Exception e) {
 			}
+
 			Tracker t = ((BarcampBangalore) getApplication()).getTracker();
 
 			// Set screen name.
