@@ -77,6 +77,7 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 		if (!GCMUtils.isRegistered(this)) {
 			Intent registrationIntent = new Intent(
 					"com.google.android.c2dm.intent.REGISTER");
+			registrationIntent.setPackage("com.google.android");
 			// sets the app name in the intent
 			registrationIntent.putExtra("app",
 					PendingIntent.getBroadcast(this, 0, new Intent(), 0));
