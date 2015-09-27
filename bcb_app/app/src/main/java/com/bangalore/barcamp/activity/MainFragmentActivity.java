@@ -51,7 +51,7 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	private CharSequence mTitle;
 	private CharSequence mDrawerTitle;
 	private DrawerLayout mDrawerLayout;
-	private ActionBarDrawerToggle mDrawerToggle;
+	//private ActionBarDrawerToggle mDrawerToggle;
 	private Menu menu;
 	public final static int CALL_REFRESH = 100;
 	public static final int DISMISS_PROGRESS_DIALOG = 101;
@@ -101,7 +101,7 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.content_frame, new ScheduleFragment()).commit();
 		}
-		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, BCBConsts.BARCAMP_BANGALORE);
+		//mDrawerToggle = BCBFragmentUtils.setupActionBar(this, BCBConsts.BARCAMP_BANGALORE);
 
 		MessagesDataSource ds = new MessagesDataSource(getApplicationContext());
 		ds.open();
@@ -123,16 +123,16 @@ public class MainFragmentActivity extends BCBFragmentActionbarActivity {
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
+		//mDrawerToggle.syncState();
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Pass the event to ActionBarDrawerToggle, if it returns
 		// true, then it has handled the app icon touch event
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
+		/*if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
-		}
+		}*/
 		// Handle your other action bar items...
 
 		return super.onOptionsItemSelected(item);

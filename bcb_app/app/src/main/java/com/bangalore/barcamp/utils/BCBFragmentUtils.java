@@ -41,7 +41,7 @@ public class BCBFragmentUtils {
 			final String drawerTitle) {
 		DrawerLayout mDrawerLayout = (DrawerLayout) activity
 				.findViewById(R.id.drawer_layout);
-		final ActionBar actionbar = activity.getSupportActionBar();
+		//final ActionBar actionbar = activity.getSupportActionBar();
 		ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
 				activity, mDrawerLayout, R.drawable.three_lines, R.string.ok,
 				R.string.close) {
@@ -49,7 +49,7 @@ public class BCBFragmentUtils {
 			/** Called when a drawer has settled in a completely closed state. */
 			public void onDrawerClosed(View view) {
 				super.onDrawerClosed(view);
-				actionbar.setTitle(drawerTitle);
+				//actionbar.setTitle(drawerTitle);
 				activity.supportInvalidateOptionsMenu(); // creates call to
 				// onPrepareOptionsMenu()
 			}
@@ -57,7 +57,7 @@ public class BCBFragmentUtils {
 			/** Called when a drawer has settled in a completely open state. */
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
-				actionbar.setTitle(drawerTitle);
+				//actionbar.setTitle(drawerTitle);
 				activity.supportInvalidateOptionsMenu();
 				// invalidateOptionsMenu(); // creates call to
 				// onPrepareOptionsMenu()
@@ -68,11 +68,11 @@ public class BCBFragmentUtils {
 		// Set the drawer toggle as the DrawerListener
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		actionbar.setDisplayHomeAsUpEnabled(true);
-		actionbar.setHomeButtonEnabled(true);
+//		actionbar.setDisplayHomeAsUpEnabled(true);
+		//actionbar.setHomeButtonEnabled(true);
 
-		actionbar.setTitle(drawerTitle);
-        activity.supportInvalidateOptionsMenu();
+		//actionbar.setTitle(drawerTitle);
+       // activity.supportInvalidateOptionsMenu();
 
 		return mDrawerToggle;
 	}

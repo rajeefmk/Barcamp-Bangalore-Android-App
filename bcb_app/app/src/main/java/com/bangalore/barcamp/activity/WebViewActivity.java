@@ -25,7 +25,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.view.ActionBarPolicy;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,228 +44,203 @@ import com.bangalore.barcamp.utils.BCBFragmentUtils;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-public class WebViewActivity extends BCBFragmentActionbarActivity {
-	private static final int SHOW_ERROR_DIALOG = 100;
-	public static final String ENABLE_LOGIN = "enable_login";
-	public static final String URL = "URLToShow";
-	WebView webView;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private int refreshMenuID;
+public class WebViewActivity extends AppCompatActivity {
+    private static final int SHOW_ERROR_DIALOG = 100;
+    public static final String ENABLE_LOGIN = "enable_login";
+    public static final String URL = "URLToShow";
+    WebView webView;
+    Toolbar mToolbar;
+    private int refreshMenuID;
 
-	@Override
-	protected void onNewIntent(Intent intent) {
-		super.onNewIntent(intent);
-		String newUrl = intent.getStringExtra(URL);
-		String url = getIntent().getStringExtra(URL);
-		if (!newUrl.equals(url)) {
-			setIntent(intent);
-			findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
-			webView.setVisibility(View.GONE);
-			webView.loadUrl(newUrl);
-			hideDrawer();
-		}
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String newUrl = intent.getStringExtra(URL);
+        String url = getIntent().getStringExtra(URL);
+        if (!newUrl.equals(url)) {
 
-	}
+            setIntent(intent);
+            findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+            webView.setVisibility(View.GONE);
+            webView.loadUrl(newUrl);
+        }
 
-	@Override
-	public void hideDrawer() {
-		super.hideDrawer();
-		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerLayout.closeDrawers();
-	}
+    }
 
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (item.getItemId() == R.id.refresh) {
+            findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+            webView.setVisibility(View.GONE);
+            webView.reload();
+        }
+        // Handle your other action bar items...
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Pass the event to ActionBarDrawerToggle, if it returns
-		// true, then it has handled the app icon touch event
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		} else if (item.getItemId() == R.id.refresh) {
-			findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
-			webView.setVisibility(View.GONE);
-			webView.reload();
-		}
-		// Handle your other action bar items...
+        return super.onOptionsItemSelected(item);
+    }
 
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public void onAttachFragment(android.app.Fragment fragment) {
+        super.onAttachFragment(fragment);
+        ActionBarPolicy.get(this).showsOverflowMenuButton();
+        supportInvalidateOptionsMenu();
+    }
 
-	@Override
-	public void onAttachFragment(android.app.Fragment fragment) {
-		super.onAttachFragment(fragment);
-		ActionBarPolicy.get(this).showsOverflowMenuButton();
-		supportInvalidateOptionsMenu();
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.webview_revamp);
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.webview);
-		mDrawerToggle = BCBFragmentUtils.setupActionBar(this, BCBConsts.BARCAMP_BANGALORE);
-		webView = (WebView) findViewById(R.id.webView);
-		WebSettings websettings = webView.getSettings();
-		websettings.setJavaScriptEnabled(true);
-		webView.setClickable(true);
-		webView.setWebViewClient(new WebViewClient() {
-			@Override
-			public void onPageStarted(WebView view, String url, Bitmap favicon) {
-				if (url.contains("bcbapp://android")) {
-					setUserDetails(url);
-				}
-				super.onPageStarted(view, url, favicon);
-			}
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        webView = (WebView) findViewById(R.id.webView);
+        WebSettings websettings = webView.getSettings();
+        websettings.setJavaScriptEnabled(true);
+        webView.setClickable(true);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                if (url.contains("bcbapp://android")) {
+                    setUserDetails(url);
+                }
+                super.onPageStarted(view, url, favicon);
+            }
 
-			private void setUserDetails(String url) {
-				Intent newIntent = new Intent(WebViewActivity.this,
-						MainFragmentActivity.class);
-				newIntent.setData(Uri.parse(url));
-				startActivity(newIntent);
-				String id = newIntent.getData().getQueryParameter("id");
-				String sid = newIntent.getData().getQueryParameter("sid");
-				Log.e("data", "id: " + id + " sid: " + sid);
-				BCBSharedPrefUtils
-						.setUserData(getApplicationContext(), id, sid);
-				BCBSharedPrefUtils.setScheduleUpdated(WebViewActivity.this,
-						true);
-				finish();
-			}
+            private void setUserDetails(String url) {
+                Intent newIntent = new Intent(WebViewActivity.this,
+                        MainFragmentActivity.class);
+                newIntent.setData(Uri.parse(url));
+                startActivity(newIntent);
+                String id = newIntent.getData().getQueryParameter("id");
+                String sid = newIntent.getData().getQueryParameter("sid");
+                Log.e("data", "id: " + id + " sid: " + sid);
+                BCBSharedPrefUtils
+                        .setUserData(getApplicationContext(), id, sid);
+                BCBSharedPrefUtils.setScheduleUpdated(WebViewActivity.this,
+                        true);
+                finish();
+            }
 
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				findViewById(R.id.linearLayout2).setVisibility(View.GONE);
-				webView.setVisibility(View.VISIBLE);
-			}
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                findViewById(R.id.linearLayout2).setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+            }
 
-			@Override
-			public void onReceivedError(WebView view, int errorCode,
-					String description, String failingUrl) {
-				showDialog(SHOW_ERROR_DIALOG);
-			}
+            @Override
+            public void onReceivedError(WebView view, int errorCode,
+                                        String description, String failingUrl) {
+                showDialog(SHOW_ERROR_DIALOG);
+            }
 
-			@Override
-			public void onLoadResource(WebView view, String url) {
-				if (url.contains("bcbapp://android")) {
-					setUserDetails(url);
-					Tracker t = ((BarcampBangalore) getApplication())
-							.getTracker();
+            @Override
+            public void onLoadResource(WebView view, String url) {
+                if (url.contains("bcbapp://android")) {
+                    setUserDetails(url);
+                    Tracker t = ((BarcampBangalore) getApplication())
+                            .getTracker();
 
-					// Send a screen view.
-					t.send(new HitBuilders.EventBuilder()
-							.setCategory("ui_action").setAction("button")
-							.setLabel("Login Success").build());
+                    // Send a screen view.
+                    t.send(new HitBuilders.EventBuilder()
+                            .setCategory("ui_action").setAction("button")
+                            .setLabel("Login Success").build());
 
-				}
-				super.onLoadResource(view, url);
-			}
+                }
+                super.onLoadResource(view, url);
+            }
 
-			@Override
-			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if (url.contains("bcbapp://android")) {
-					setUserDetails(url);
-					Tracker t = ((BarcampBangalore) getApplication())
-							.getTracker();
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.contains("bcbapp://android")) {
+                    setUserDetails(url);
+                    Tracker t = ((BarcampBangalore) getApplication())
+                            .getTracker();
 
-					// Send a screen view.
-					t.send(new HitBuilders.EventBuilder()
-							.setCategory("ui_action").setAction("button")
-							.setLabel("Login Success").build());
-					return true;
+                    // Send a screen view.
+                    t.send(new HitBuilders.EventBuilder()
+                            .setCategory("ui_action").setAction("button")
+                            .setLabel("Login Success").build());
+                    return true;
 
-				}
-				if (url.equals(getIntent().getStringExtra(URL))) {
-					return true;
-				} else if (getIntent().getBooleanExtra(ENABLE_LOGIN, false)) {
-					return false;
-				}
-				Log.e("Action", url);
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse(url));
-				startActivity(intent);
-				return true;
-			}
+                }
+                if (url.equals(getIntent().getStringExtra(URL))) {
+                    return true;
+                } else if (getIntent().getBooleanExtra(ENABLE_LOGIN, false)) {
+                    return false;
+                }
+                Log.e("Action", url);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
 
-		});
+        });
 
-		String url = getIntent().getStringExtra(URL);
-		webView.loadUrl(url);
+        String url = getIntent().getStringExtra(URL);
+        webView.loadUrl(url);
 
-		Tracker t = ((BarcampBangalore) getApplication()).getTracker();
+        Tracker t = ((BarcampBangalore) getApplication()).getTracker();
 
-		// Set screen name.
-		t.setScreenName(this.getClass().getName() + url);
+        // Set screen name.
+        t.setScreenName(this.getClass().getName() + url);
 
-		// Send a screen view.
-		t.send(new HitBuilders.AppViewBuilder().build());
+        // Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
 
-		// ActionBar actionbar = (ActionBar) findViewById(R.id.actionBar1);
-		// actionbar.addAction(new Action() {
-		//
-		// @Override
-		// public void performAction(View arg0) {
-		// findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
-		// webView.setVisibility(View.GONE);
-		// webView.reload();
-		// }
-		//
-		// @Override
-		// public int getDrawable() {
-		// return R.drawable.refresh;
-		// }
-		// }, 0);
+        // ActionBar actionbar = (ActionBar) findViewById(R.id.actionBar1);
+        // actionbar.addAction(new Action() {
+        //
+        // @Override
+        // public void performAction(View arg0) {
+        // findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+        // webView.setVisibility(View.GONE);
+        // webView.reload();
+        // }
+        //
+        // @Override
+        // public int getDrawable() {
+        // return R.drawable.refresh;
+        // }
+        // }, 0);
 
-		webView.requestFocus(View.FOCUS_DOWN);
+        webView.requestFocus(View.FOCUS_DOWN);
+        supportInvalidateOptionsMenu();
 
-		BCBFragmentUtils.addNavigationActions(this);
-		supportInvalidateOptionsMenu();
+    }
 
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.refresh, menu);
+        return true;
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.refresh, menu);
-		return true;
-	}
+    protected Dialog onCreateDialog(int id) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        switch (id) {
+            case SHOW_ERROR_DIALOG:
+                alertDialog.setCancelable(false);
+                alertDialog.setTitle(getString(R.string.error_title));
+                alertDialog
+                        .setMessage(getString(R.string.connection_error_and_try_again));
+                alertDialog.setButton(getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
 
-	protected Dialog onCreateDialog(int id) {
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-		switch (id) {
-		case SHOW_ERROR_DIALOG:
-			alertDialog.setCancelable(false);
-			alertDialog.setTitle(getString(R.string.error_title));
-			alertDialog
-					.setMessage(getString(R.string.connection_error_and_try_again));
-			alertDialog.setButton(getString(R.string.ok),
-					new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dismissDialog(SHOW_ERROR_DIALOG);
+                                WebViewActivity.this.finish();
+                            }
+                        });
+                break;
+        }
+        return alertDialog;
+    }
 
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dismissDialog(SHOW_ERROR_DIALOG);
-							WebViewActivity.this.finish();
-						}
-					});
-			break;
-		}
-		return alertDialog;
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public Intent callForFunction(int id, Intent params) {
-		if (id == START_FRAGMENT) {
-			startActivity(params);
-
-		}
-		return super.callForFunction(id, params);
-	}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }

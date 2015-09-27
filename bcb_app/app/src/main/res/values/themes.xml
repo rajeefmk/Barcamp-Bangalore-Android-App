@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <!-- the theme applied to the application or activity -->
-    <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="CustomActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:actionBarStyle" tools:targetApi="11">@style/MyActionBar</item>
 
         <!-- Support library compatibility -->
